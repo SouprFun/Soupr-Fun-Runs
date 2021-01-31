@@ -16,7 +16,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 // import InfoPage from '../InfoPage/InfoPage';
-// import LandingPage from '../LandingPage/LandingPage';
+import LandingPage from '../LandingPage/LandingPage';
 // import LoginPage from '../LoginPage/LoginPage';
 // import RegisterPage from '../RegisterPage/RegisterPage';
 
@@ -84,7 +84,7 @@ function App() {
             component={RegisterPage}
             authRedirect="/user"
           /> */}
-          {/* <ProtectedRoute
+          <ProtectedRoute
             // with authRedirect:
             // - if logged in, redirects to "/user"
             // - else shows LandingPage at "/home"
@@ -92,7 +92,7 @@ function App() {
             path="/home"
             component={LandingPage}
             authRedirect="/user"
-          /> */}
+          />
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route render={() => <h1>404</h1>} />

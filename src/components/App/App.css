@@ -15,6 +15,33 @@ img {
 }
 
 /* --------------------------------------------------------------------------------
+COLOR PALETTE
+** purple - #9f4eff / rgb(159, 78, 255)
+** off white - #dee8f7 / rgb(222, 232, 247)
+** deep blue - #0636ab / rgb(6, 54, 171)
+** medium aqua - #04b2d9 / rgb(4, 178, 217)
+** bright aqua - #05f2f2 / rgb(5, 242, 242)
+** drk blue - #020854 / rgb(2, 8, 84)
+-------------------------------------------------------------------------------- */
+
+/* --------------------------------------------------------------------------------
+SITE BACKGROUND
+-------------------------------------------------------------------------------- */
+
+body {
+  /* background-color: #020854; */
+  background-image: url(./images/ocean-three-unsplash.jpg);
+  background-repeat: no-repeat;
+  background-size: 105%;
+  background-position: center -10px;
+  position: relative;
+}
+
+#react-root {
+  background-image: linear-gradient(to top, #020854 20%, rgb(6, 54, 171, 0.2));
+}
+
+/* --------------------------------------------------------------------------------
 Container
 -------------------------------------------------------------------------------- */
 
@@ -29,11 +56,11 @@ Button
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #014041;
+  border-color: #0636ab;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #00acb0;
-  color: #f8f8f8;
+  background-color: #04b2d9;
+  color: #020854;
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
@@ -55,7 +82,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #008183;
+  background-color: #05f2f2;
   text-decoration: none;
 }
 

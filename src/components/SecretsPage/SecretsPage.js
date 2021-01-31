@@ -11,7 +11,8 @@ function SecretsPage() {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className="container">
+      <h2>Submarine Secrets</h2>
       <p>
         Currently logged in as <b>{store.user.username}</b>
       </p>

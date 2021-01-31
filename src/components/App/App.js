@@ -19,6 +19,7 @@ import UserPage from '../UserPage/UserPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import SecretsPage from '../SecretsPage/SecretsPage';
 
 import './App.css';
 
@@ -54,6 +55,14 @@ function App() {
             exact
             path="/user"
             component={UserPage}
+          />
+
+          {/* All of Our Secrets in a Page... */}
+          <ProtectedRoute
+            // only logged in users should view this page
+            exact
+            path="/secrets"
+            component={SecretsPage}
           />
 
           {/* <ProtectedRoute

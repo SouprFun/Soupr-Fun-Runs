@@ -29,8 +29,8 @@ function Nav() {
 
         {store.user.id && (
           <>
-            <Link className="nav-link" to="/info">
-              Info Page
+            <Link className="nav-link" to="/secrets">
+              Secrets Page
             </Link>
             <LogOutButton className="nav-link" />
           </>

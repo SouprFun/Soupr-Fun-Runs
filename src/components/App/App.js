@@ -15,10 +15,10 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
-import LandingPage from '../LandingPage/LandingPage';
-import LoginPage from '../LoginPage/LoginPage';
-import RegisterPage from '../RegisterPage/RegisterPage';
+// import InfoPage from '../InfoPage/InfoPage';
+// import LandingPage from '../LandingPage/LandingPage';
+// import LoginPage from '../LoginPage/LoginPage';
+// import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './App.css';
 
@@ -56,17 +56,17 @@ function App() {
             component={UserPage}
           />
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
             path="/info"
             component={InfoPage}
-          />
+          /> */}
 
           {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
-          <ProtectedRoute
+          {/* <ProtectedRoute
             // with authRedirect:
             // - if logged in, redirects to "/user"
             // - else shows LoginPage at /login
@@ -74,8 +74,8 @@ function App() {
             path="/login"
             component={LoginPage}
             authRedirect="/user"
-          />
-          <ProtectedRoute
+          /> */}
+          {/* <ProtectedRoute
             // with authRedirect:
             // - if logged in, redirects to "/user"
             // - else shows RegisterPage at "/registration"
@@ -83,8 +83,8 @@ function App() {
             path="/registration"
             component={RegisterPage}
             authRedirect="/user"
-          />
-          <ProtectedRoute
+          /> */}
+          {/* <ProtectedRoute
             // with authRedirect:
             // - if logged in, redirects to "/user"
             // - else shows LandingPage at "/home"
@@ -92,7 +92,7 @@ function App() {
             path="/home"
             component={LandingPage}
             authRedirect="/user"
-          />
+          /> */}
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route render={() => <h1>404</h1>} />

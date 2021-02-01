@@ -22,21 +22,21 @@ function Nav() {
       <Link to="/home">
         <h2 className="nav-title">Secure Submarine</h2>
       </Link>
-      <div className="nav-right">
-        <Link className="nav-link" to={loginLinkData.path}>
+      <div>
+        <Link className="navLink" to={loginLinkData.path}>
           {loginLinkData.text}
         </Link>
 
         {store.user.id && (
           <>
-            <Link className="nav-link" to="/secrets">
+            <Link className="navLink" to="/secrets">
               Secrets Page
             </Link>
-            <LogOutButton className="nav-link" />
+            <LogOutButton className="navLink" />
           </>
         )}
 
-        <Link className="nav-link" to="/about">
+        <Link className="navLink" to="/about">
           About
         </Link>
       </div>

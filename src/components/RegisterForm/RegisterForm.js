@@ -29,7 +29,7 @@ function RegisterForm() {
         </h3>
       )}
       <div>
-        <label htmlFor="username">
+        <label htmlFor="username" className="textField">
           Username:
           <input
             type="text"
@@ -41,7 +41,7 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <label htmlFor="password">
+        <label htmlFor="password" className="textField">
           Password:
           <input
             type="password"

@@ -1,8 +1,6 @@
+# REACT AUTH SHELF
 
-# EDA Project
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
-
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+Our client, Prime Digital Academy: Room 2, has asked for an app to simulate the behavior of their shelf. That is, a list of items placed on the classroom shelf. More details about each of the features are listed below in the README.md.
 
 ## Use the Template for This Repository (Don't Clone)
 
@@ -17,9 +15,10 @@ Before you get started, make sure you have the following software installed on y
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
-## Create database and table
+## CREATE DATABASE AND TABLE
 
-Create a new database called `prime_app` and create a `user` table:
+Create a new database called `auth_shelf` and create a `user` table:
+ user-update
 
 ```SQL
 CREATE TABLE "user" (
@@ -27,9 +26,14 @@ CREATE TABLE "user" (
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
-```
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+CREATE TABLE "item" (
+    "id" SERIAL PRIMARY KEY,
+    "description" VARCHAR (80) NOT NULL,
+    "image_url" VARCHAR (2083),
+    "user_id" INT REFERENCES "user"
+);
+```
 
 ## Development Setup Instructions
 

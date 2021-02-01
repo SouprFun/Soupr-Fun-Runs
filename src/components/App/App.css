@@ -14,6 +14,16 @@ img {
   max-width: 100%;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
 /* --------------------------------------------------------------------------------
 COLOR PALETTE
 ** purple - #9f4eff / rgb(159, 78, 255)
@@ -47,6 +57,19 @@ Container
 
 .container {
   padding: 20px;
+}
+
+/* --------------------------------------------------------------------------------
+Base Title
+-------------------------------------------------------------------------------- */
+
+.titleBase {
+  color: #05f2f2;
+  text-shadow: 1px 2px 1px #020854;
+}
+
+.titleBase_inner {
+  color: #0636ab;
 }
 
 /* --------------------------------------------------------------------------------
@@ -90,17 +113,17 @@ Button
 .btn_asLink {
   padding: 0;
   border-width: 0;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid #05f2f2;
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #444;
+  color: #05f2f2;
 }
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #008183;
-  color: #008183;
+  border-color: #05f2f2;
+  color: #05f2f2;
 }
 
 /* --------------------------------------------------------------------------------
@@ -128,12 +151,75 @@ Form Treatment
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
-  background-color: #efefef;
+  background-color: rgb(222, 232, 247, 0.8);
+  border-top: 1px solid #efefef;
   border-radius: 3px;
-  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
+  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.7);
 }
 
 input {
   margin: 5px;
   margin-bottom: 10px;
+}
+
+/* --------------------------------------------------------------------------------
+Content Panel
+-------------------------------------------------------------------------------- */
+
+.panel {
+  box-sizing: border-box;
+  padding: 16px;
+  background-color: rgb(222, 232, 247, 0.8);
+  border-top: 1px solid #efefef;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgb(0, 0, 0, 0.7);
+}
+
+/* --------------------------------------------------------------------------------
+Simple Table
+-------------------------------------------------------------------------------- */
+
+.simpleTable {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #020854;
+  border-collapse: collapse;
+}
+
+.simpleTable td,
+.simpleTable th {
+  padding: 8px;
+  border: 1px solid #020854;
+}
+
+.simpleTable thead tr {
+  background-color: #0636ab;
+  color: #05f2f2;
+}
+
+.simpleTable td:first-child {
+  text-align: center;
+}
+
+.simpleTable tbody tr:nth-child(2n + 1) {
+  background-color: #dee8f7;
+}
+
+/* --------------------------------------------------------------------------------
+Profile Image
+-------------------------------------------------------------------------------- */
+
+.profImg {
+  box-sizing: border-box;
+  width: 60%;
+  padding-bottom: 60%;
+  margin: 0 auto 15px;
+  border: 4px solid #04b2d9;
+  border-radius: 100%;
+  background-image: url(./images/default-profile.jpg);
+  background-size: cover;
+  box-shadow: inset 0px 1px 16px rgb(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+  font-size: 0;
 }

@@ -7,9 +7,11 @@ function UserPage() {
   const store = useReduxStore();
   return (
     <div className="container">
-      <h1 id="welcome">Welcome, {store.user.username}!</h1>
-      <p>Your ID is: {store.user.id}</p>
-      <LogOutButton className="btn" />
+      <div className="panel">
+        <h2 className="titleBase_inner">Welcome, {store.user.username}!</h2>
+        <p>Your ID is: {store.user.id}</p>
+        <LogOutButton className="btn" />
+      </div>
     </div>
   );
 }

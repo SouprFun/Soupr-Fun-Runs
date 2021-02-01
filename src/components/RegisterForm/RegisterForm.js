@@ -22,7 +22,7 @@ function RegisterForm() {
 
   return (
     <form className="formPanel" onSubmit={registerUser}>
-      <h2>Register User</h2>
+      <h2 className="titleBase_inner">Register User</h2>
       {store.errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {store.errors.registrationMessage}

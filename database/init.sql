@@ -1,3 +1,4 @@
+-- ONLY "CREATE TABLE" QUERIES SHOULD BE IN THIS FILE
 
 -- USER is a reserved keyword with Postgres
 -- You must use double quotes in every query that user is in:

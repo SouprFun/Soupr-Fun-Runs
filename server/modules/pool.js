@@ -27,10 +27,30 @@ if (process.env.DATABASE_URL) {
     idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
   };
 } else {
+  // "localhost" is Docker's default
+  const host = process.env.POSTGRES_HOST
+    ? process.env.POSTGRES_HOST
+    : 'localhost';
+  // "postgres" is the default username for Docker
+  const user = process.env.POSTGRES_USER
+    ? process.env.POSTGRES_USER
+    : 'postgres';
+  // "postgres" is the default password for Docker
+  const password = process.env.POSTGRES_PASSWORD
+    ? process.env.POSTGRES_PASSWORD
+    : 'postgres';
+  // setting up PORT 5432 as default DB PORT
+  const port = process.env.PORT_DB ? process.env.PORT_DB : 5432;
+  const database = process.env.POSTGRES_DB
+    ? process.env.POSTGRES_DB
+    : 'prime_boilerplate';
+
   config = {
-    host: 'localhost', // Server hosting the postgres database
-    port: 5432, // env var: PGPORT
-    database: 'prime_app', // CHANGE THIS LINE! env var: PGDATABASE, this is likely the one thing you need to change to get up and running
+    host, // Server hosting the postgres database
+    user,
+    password,
+    port,
+    database, // name of application database
     max: 10, // max number of clients in the pool
     idleTimeoutMillis: 30000, // how long a client is allowed to remain idle before being closed
   };

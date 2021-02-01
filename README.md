@@ -19,11 +19,11 @@ We recommend working in groups of 4 or 6 and pair programming for this project. 
 
 ##### Display all Items
 
-The shelf (info) page should show all of the items stored in the database in a list or table.
+The Shelf page (`ShelfPage.js`at `/shelf`) should show all of the items stored in the database in a list or table.
 
 ##### Add Items to the Shelf
 
-The Shelf (Info) Page should allow a user to add a new item to the database (which should immediately appear in the list).
+The Shelf page (`ShelfPage.js` at `/shelf`) should allow a user to add a new item to the database (which should immediately appear in the list).
 
 > NOTE: Image url should be a full path to an existing image on the web. You should not attempt to implement image upload for this.
 
@@ -37,9 +37,9 @@ An authenticated user should be able to delete items from the shelf if they were
 
 - Ability to edit an existing item on the shelf from the info page.
 - Have anyone, not just logged in users, be able to see what is on the shelf, but not edit, remove, nor add.
-- A new route to display all items for a specific user. `/shelf/2` would display items uploaded by user with the id of `2`.
-- Filestack for image upload on the add page.
-- Style with Material-UI
+- Add a new route to display all items for a specific user called "My Shelf". The client-side url should be `/shelf/2` where `/2` should be the id of the logged in user. Only the items associated with the specific logged in user should be displayed on this new page.
+- Use "Filestack" for image upload on the add page.
+- Style the application with Material-UI.
 
 ---
 

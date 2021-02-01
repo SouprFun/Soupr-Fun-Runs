@@ -11,6 +11,7 @@ Grid
   /* defaults to 'flex-start' */
   justify-content: flex-start;
   align-items: flex-start;
+  margin: 0 -0.5rem;
 }
 
 .grid-col {
@@ -77,4 +78,20 @@ Grid
 .grid-col_12 {
   flex-basis: 100%;
   max-width: 100%;
+}
+
+/* --------------------------------------------------------------------------------
+Media Block
+-------------------------------------------------------------------------------- */
+
+.mediaBlock::after {
+  content: '';
+  clear: both;
+}
+
+.mediaBlock-img {
+  float: left;
+  margin: 0 10px 10px 0;
+  max-width: 100%;
+  width: 540px;
 }

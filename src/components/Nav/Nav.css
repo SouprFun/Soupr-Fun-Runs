@@ -5,10 +5,10 @@
   align-items: center;
 
   margin: 0 0 30px;
-  background-color: rgb(6, 54, 171, 0.8);
+  background-color: rgb(2, 8, 84, 0.8);
   overflow: hidden;
-  border-bottom: 1px solid rgb(2, 8, 84, 0.6);
-  box-shadow: 0px 2px 60px rgb(2, 8, 84, 0.8);
+  border-bottom: 1px solid rgb(0, 0, 0, 0.7);
+  box-shadow: 0px 2px 60px rgb(0, 0, 0, 0.8);
 }
 
 .nav a {

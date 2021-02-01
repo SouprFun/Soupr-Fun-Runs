@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './LandingPage.css';
+import submarineImg from './submarine-one-unsplash.jpg';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
@@ -20,6 +21,7 @@ function LandingPage() {
       <div className="grid">
         <div className="grid-col grid-col_8">
           <div className="panel">
+            <img src={submarineImg} alt="naval submarine" />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
               id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra

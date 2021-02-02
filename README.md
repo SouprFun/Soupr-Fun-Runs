@@ -2,9 +2,32 @@
 
 Our client, Prime Digital Academy: Room 2, has asked for an app to simulate the behavior of their shelf. That is, a list of items placed on the classroom shelf. More details about each of the features are listed below in the README.md.
 
-## Use the Template for This Repository (Don't Clone)
+## Use the Download ZIP Option (Don't Fork & Don't Clone)
 
-- Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account.
+**Step 1 - Download ZIP of Project:**
+- click on the **Code** button
+    - select the **Download ZIP** option from the menu
+- file download should appear at the bottom of your web browser
+    - click on the downloaded file icon
+- a finder window should open with the assignment folder unzipped in the Downloads directory
+- move the folder to where you are keeping your projects
+
+**Step 2 - Initialize as a Repo:**
+- open the project in VSCode
+- open up the terminal in VSCode for the project
+    - *in terminal:* run `git init`
+    - *in terminal:* run `git add .`
+    - *in terminal:* run `git commit -m "initial commit"`
+
+**Step 3 - Attach GitHub Repo:**
+- goto GitHub in the browser (make sure you are logged in)
+- click on the `+` icon in the top right of the window
+    - select **New repository** from the menu
+- name your repo **secure-submarine**
+- make sure your repo has **Public** selected
+- click the **Create repository** button at the bottom
+- copy the terminal commands listed in the **…or push an existing repository from the command line** section
+- goto your project terminal in VSCode and paste the commands you just copied from GitHub and press **return**
 
 
 ---

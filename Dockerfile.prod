@@ -3,12 +3,15 @@
 #
 # ----------------------------------------
 # Deployment Steps for Docker to Heroku
+# - must have created a heroku account
+# - the following commands should be run
+#   in the terminal at the root of the
+#   project
 # ----------------------------------------
 #
 # heroku login
 # heroku create app-name-optional
 # heroku stack:set container
-#
 # heroku addons:create heroku-postgresql:hobby-dev
 #
 # git push heroku master

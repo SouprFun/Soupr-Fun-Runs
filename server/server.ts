@@ -1,14 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
+import sessionMiddleware from './modules/session-middleware';
+import passport from './strategies/user.strategy';
+// Route includes
+import userRouter from './routes/user.router';
+
 require('dotenv').config();
 
-const app = express();
-
-const sessionMiddleware = require('./modules/session-middleware');
-const passport = require('./strategies/user.strategy');
-
-// Route includes
-const userRouter = require('./routes/user.router');
+const app: any = express();
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -28,9 +27,9 @@ app.use('/api/user', userRouter);
 app.use(express.static('build'));
 
 // App Set //
-const PORT = process.env.PORT || 5000;
+const PORT: string | number = process.env.PORT || 5000;
 
 /** Listen * */
-app.listen(PORT, () => {
+app.listen(PORT, (): void => {
   console.log(`Listening on port: ${PORT}`);
 });

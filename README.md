@@ -23,7 +23,7 @@ Our client, Prime Digital Academy: Room 2, has asked for an app to simulate the 
 - goto GitHub in the browser (make sure you are logged in)
 - click on the `+` icon in the top right of the window
     - select **New repository** from the menu
-- name your repo **secure-submarine**
+- name your repo **auth-shelf**
 - make sure your repo has **Public** selected
 - click the **Create repository** button at the bottom
 - copy the terminal commands listed in the **…or push an existing repository from the command line** section

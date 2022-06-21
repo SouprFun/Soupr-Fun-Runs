@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react'
+import "./InputForm.css"
 
 //MUI
 import TextField from '@mui/material/TextField';
@@ -20,16 +21,19 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 function InputForm() {
   //array of the run categories
   const runCats = [
-    'Speed',
-    'Long',
-    'Fun',
-    'Casual/Social',
-    'Race'
+    { id: 1, name: 'Speed' },
+    { id: 2, name: 'Long' },
+    { id: 3, name: 'Fun' },
+    { id: 4, name: 'Casual/Social' },
+    { id: 5, name: 'Race' }
   ]
 
   //states
   const [categories, setCategories] = useState([]);
-  const [date, setDate] = useState(new Date())
+  const [date, setDate] = useState(new Date());
+  const [distance, setDistance] = useState();
+  const [time, setTime] = useState()
+  const [note, setNote] = useState('')
 
   //handles change for selector box
   const inputChange = (event) => {
@@ -47,8 +51,10 @@ function InputForm() {
     setDate(newValue);
   };
 
+  //handles the submit button click
   function clickSubmit() {
     console.log("in click submit");
+    console.log("our inputs are: ", distance, time, categories, date, note);
   }
 
   return (
@@ -56,18 +62,24 @@ function InputForm() {
       <h3>Pace will be calculated</h3>
       <div className='inputs'>
         <TextField
-          helperText="Enter Run Distance"
-          // id=""
+          helperText="Enter Run Distance in Miles"
+          className="input"
+          type="number"
           label="Distance"
+          value={distance}
+          onChange={(event) => setDistance(event.target.value)}
         />
         <TextField
           helperText="Enter Run Time"
-          color='warning'
-          // id=""
+          color='success'
+          className="input"
+          type="number"
           label="Time"
+          value={time}
+          onChange={(event) => setTime(event.target.value)}
         />
-        <FormControl sx={{ m: 1, width: 300 }}>
-          <InputLabel id="demo-multiple-checkbox-label">Run Categories</InputLabel>
+        <FormControl className='input' sx={{ m: 1, width: 400 }}>
+          <InputLabel >Run Categories</InputLabel>
           <Select
             labelId="demo-multiple-checkbox-label"
             id="demo-multiple-checkbox"
@@ -79,9 +91,9 @@ function InputForm() {
           // MenuProps={MenuProps}
           >
             {runCats.map((runCats) => (
-              <MenuItem key={runCats} value={runCats}>
-                <Checkbox checked={categories.indexOf(runCats) > -1} />
-                <ListItemText primary={runCats} />
+              <MenuItem key={runCats.id} value={runCats.name}>
+                <Checkbox checked={categories.indexOf(runCats.name) > -1} />
+                <ListItemText primary={runCats.name} />
               </MenuItem>
             ))}
           </Select>
@@ -98,17 +110,20 @@ function InputForm() {
           />
         </LocalizationProvider>
       </div>
-      
+
       <div className='notes'>
         <TextField
           helperText="Enter any notes here"
-          id="notesInput"
+          className="input"
+          id='notesInput'
           label="Notes"
+          value={note}
+          onChange={(event) => setNote(event.target.value)}
         />
       </div>
 
       <div className='inputSubmit'>
-        <Button variant="contained" color="warning" onClick={() => clickSubmit()} >Submit</Button>
+        <Button variant="contained" color="success" onClick={() => clickSubmit()} >Submit</Button>
       </div>
     </div>
   );

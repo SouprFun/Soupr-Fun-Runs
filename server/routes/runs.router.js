@@ -9,7 +9,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     console.log("req.user is:", req.user);
     pool
         //where user_id
-        .query(`SELECT * FROM "runs";`)
+        .query(`SELECT * FROM "runs" 
+        JOIN "user" ON runs.user_id = "user"."id"
+        where "user".id = ${req.user.id};`)
         .then((results)=> res.send(results.rows))
         .catch((error) => {
             console.log('Error making SELECT for runs:', error);
@@ -39,5 +41,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
           });
 });
+
+
 
 module.exports = router;

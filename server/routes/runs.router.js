@@ -68,9 +68,9 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 	"notes" = $6
 	WHERE runs.id = $7 AND runs.user_id = $8;`;
     pool.query(query, [body.distance, body.time, body.pace, body.cat_id, body.date, body.notes, run_id, user])
-    .then(response => res.sendStatus(200))
+        .then(response => res.sendStatus(200))
         .catch(error => {
-            console.log(`Error updating new task`, error);
+            console.log(`Error updating run`, error);
             res.sendStatus(500);
         });
 })

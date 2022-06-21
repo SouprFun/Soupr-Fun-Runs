@@ -54,4 +54,25 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         });
 })
 
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    console.log('in update');
+    const body = req.body;
+    const user = req.user.id;
+    const run_id = req.params.id;
+    query = `UPDATE runs SET 
+	"distance" = $1, 
+	"time" = $2, 
+	"pace" = $3, 
+	"cat_id" = $4, 
+	"date" = $5, 
+	"notes" = $6
+	WHERE runs.id = $7 AND runs.user_id = $8;`;
+    pool.query(query, [body.distance, body.time, body.pace, body.cat_id, body.date, body.notes, run_id, user])
+    .then(response => res.sendStatus(200))
+        .catch(error => {
+            console.log(`Error updating new task`, error);
+            res.sendStatus(500);
+        });
+})
+
 module.exports = router;

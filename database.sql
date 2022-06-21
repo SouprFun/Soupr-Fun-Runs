@@ -8,3 +8,20 @@ CREATE TABLE "user" (
     "username" VARCHAR (80) UNIQUE NOT NULL,
     "password" VARCHAR (1000) NOT NULL
 );
+
+CREATE TABLE "categories" (
+	"id" SERIAL PRIMARY KEY,
+	"run_type" VARCHAR
+	);
+
+CREATE TABLE "runs" (
+    "id" SERIAL PRIMARY KEY,
+    "user_id" INT NOT NULL REFERENCES "users",
+    "distance" FLOAT NOT NULL,
+    "time" INT NOT NULL,
+    "pace" INT NOT NULL,
+    "cat_id" INT REFERENCES "categories",
+    "date" TIMESTAMP,
+    "notes" VARCHAR
+    );
+    

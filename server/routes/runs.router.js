@@ -8,6 +8,7 @@ const {
 router.get('/', rejectUnauthenticated, (req, res) => {
     console.log("req.user is:", req.user);
     pool
+        //where user_id
         .query(`SELECT * FROM "runs";`)
         .then((results)=> res.send(results.rows))
         .catch((error) => {
@@ -31,7 +32,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     const query = `INSERT INTO "runs" ("user_id", "distance", "time", "pace", "cat_id", "date", "notes")
     VALUES ($1, $2, $3, $4, $5, $6, $7);`
     pool
-        .query(query, [req.user.id, distance, time, pace, cat_id, date, notes])
+        .query(query, [req.user.id, req.body.distance, req.body.time, req.body.pace, req.body.cat_id, req.body.date, req.body.notes])
         .then((results)=> res.send(results.rows))
         .catch((error) => {
             console.log('Error making Posting to runs:', error);

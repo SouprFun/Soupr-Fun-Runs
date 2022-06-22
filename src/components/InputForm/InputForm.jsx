@@ -29,12 +29,6 @@ function InputForm() {
     { id: 5, name: 'Race' }
   ]
 
-  useEffect(()=>{
-    dispatch({ type: 'FETCH_RUNS' });
-  },[])
-
-  const store = useSelector(store => store.run)
-  console.log("store is: ", store );
 
   //states
   const [categories, setCategories] = useState([]);

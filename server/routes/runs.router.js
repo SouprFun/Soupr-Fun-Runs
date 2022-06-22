@@ -12,7 +12,10 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         .query(`SELECT * FROM "runs" 
         JOIN "user" ON runs.user_id = "user"."id"
         where "user".id = ${req.user.id};`)
-        .then((results) => res.send(results.rows))
+        .then((results) => {
+            res.send(results.rows);
+            console.log(results);
+        })
         .catch((error) => {
             console.log('Error making SELECT for runs:', error);
             res.sendStatus(500);
@@ -30,28 +33,37 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 // note: issue with postman logging in... 
 
 router.post('/', rejectUnauthenticated, (req, res) => {
-    console.log("req.user is:", req.user);
-    const query = `INSERT INTO "runs" ("user_id", "distance", "time", "pace", "cat_id", "date", "notes")
-    VALUES ($1, $2, $3, $4, $5, $6, $7);`;
+    console.log("in post runs, req.user is:", req.user, req.body);
+    const query = `INSERT INTO "runs" ("user_id", "distance", "time", "pace", "date", "notes")
+    VALUES ($1, $2, $3, $4, $5, $6);`;
     pool
-        .query(query, [req.user.id, req.body.distance, req.body.time, req.body.pace, req.body.cat_id, req.body.date, req.body.notes])
+        .query(query, [req.user.id, req.body.distance, req.body.time, req.body.pace, req.body.date, req.body.notes])
         .then((results) => res.send(results.rows))
         .catch((error) => {
             console.log('Error making Posting to runs:', error);
             res.sendStatus(500);
         });
+    // this is to post into the runs_categories table not entirely sure how it is going to work ... 
+    // need the run id that is created when run ^^^ is posted 
+    // const query2 = `INSERT INTO "runs_categories" ("run_id", "cat_id")
+    //     VALUES($1, $2);`;
+    // for (let cat of req.body.categories){
+    //     pool   
+    //         .query(query2, [])
+    // }
 });
 
-router.post('/cat'), rejectUnauthenticated, (req, res) => {
-    console.log("in posting cats", req.body, req.user.id);
-    const query = `INSERT INTO "runs_categories" ("user_id", "cat_id")
-    VALUES($1, $2);`;
-    // for (let cat of req.body){
+// router.post('/cat'), rejectUnauthenticated, (req, res) => {
+//     console.log("in posting cat", req.body, req.user.id);
+//     const query = `INSERT INTO "runs_categories" ("user_id", "cat_id")
+//     VALUES($1, $2);`;
+//     for (let cat of req.body){
 
-    // }
-    // pool
-    //     .query(query, [req.user.id, cat] )
-}
+
+//         // pool
+//         //     .query(query, [req.user.id, cat] )
+//     }
+// }
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in delete', req.params, req.user.id)

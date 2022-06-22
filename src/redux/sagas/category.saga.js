@@ -25,10 +25,10 @@ function* categories(action) {
         console.log("this is something: ", something);
 
     }
-    try{
+    try{//issue here unknown
         yield axios.post("/api/runs/cat", something )
     }catch{
-        console.log("error in categories saga");
+        (error) => console.log("error in categories saga", error);
     }
 }
 

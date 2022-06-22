@@ -1,8 +1,8 @@
-import React from 'react';
-import { useState } from 'react'
-import "./InputForm.css"
+import React, { useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import "./InputForm.css";
 //MUI
 import TextField from '@mui/material/TextField';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -28,6 +28,13 @@ function InputForm() {
     { id: 4, name: 'Casual/Social' },
     { id: 5, name: 'Race' }
   ]
+
+  useEffect(()=>{
+    dispatch({ type: 'FETCH_RUNS' });
+  },[])
+
+  const store = useSelector(store => store.run)
+  console.log("store is: ", store );
 
   //states
   const [categories, setCategories] = useState([]);
@@ -57,24 +64,35 @@ function InputForm() {
   //handles the submit button click
   function clickSubmit() {
     console.log("in click submit");
+
+    let pace = time / distance;
     console.log("our inputs are: ", distance, time, categories, date, note);
-  
-    // for (let run of runs) {
-    //   let pace = parseFloat((run.time / run.distance) / 60 ).toFixed(2)// formula for pace && actually puts it where it needs to be
-    //   console.log(pace);
-    //   run.pace = `${Math.floor(pace)}' ${Math.round((pace - Math.floor(pace))*60)}"`;
-    //   console.log(run.id, run.pace);
-    // }
-  
-    dispatch({type: "RUN_INPUTS", payload: {distance, time, date, note}})
-    dispatch({type: "CATEGORIES", payload: {categories}})
+
+    let something = []
+    for (let cat of categories){
+        if (cat === "Speed"){
+            something.push(1)
+        }else if (cat === "Long"){
+            something.push(2)
+        }else if (cat === "Fun"){
+            something.push(3)
+        }else if (cat === "Casual/Social"){
+            something.push(4)
+        }else if (cat === "Race"){
+            something.push(5)
+        }
+        console.log("this is something: ", something)
+      }
+    //unfinished
+    dispatch({ type: "RUN_INPUTS", payload: { distance, time, pace, date, note, categories: something } })
+    // dispatch({ type: "CATEGORIES", payload: { categories } })
   }
 
   return (
     <div className="container">
       <h3>Pace will be calculated</h3>
       <div className='inputs'>
-        <TextField sx={{marginRight: 3 }}
+        <TextField sx={{ marginRight: 3 }}
           helperText="Enter Run Distance in Miles"
           className="input"
           type="number"
@@ -82,7 +100,7 @@ function InputForm() {
           value={distance}
           onChange={(event) => setDistance(event.target.value)}
         />
-        <TextField sx={{marginRight: 3 }}
+        <TextField sx={{ marginRight: 3 }}
           helperText="Enter Run Time"
           color='success'
           className="input"
@@ -93,7 +111,7 @@ function InputForm() {
         />
         <FormControl className='input' sx={{ m: 0, width: 400 }}>
           <InputLabel >Run Categories</InputLabel>
-          <Select sx={{marginTop: 0 }}
+          <Select sx={{ marginTop: 0 }}
             labelId="demo-multiple-checkbox-label"
             id="demo-multiple-checkbox"
             multiple
@@ -115,7 +133,7 @@ function InputForm() {
 
       <div className='date'>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <DateTimePicker 
+          <DateTimePicker
             label="Date&Time picker"
             value={date}
             onChange={dateChange}
@@ -125,7 +143,7 @@ function InputForm() {
       </div>
 
       <div className='notes'>
-        <TextField sx={{marginTop: 5, width: 300  }}
+        <TextField sx={{ marginTop: 5, width: 300 }}
           helperText="Enter any notes here"
           className="input"
           id='notesInput'

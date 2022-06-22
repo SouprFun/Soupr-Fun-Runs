@@ -19,6 +19,7 @@ import InputForm from '../InputForm/InputForm';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import TableDisplay from '../TableDisplay/TableDisplay';
 
 import './App.css';
 
@@ -66,6 +67,14 @@ function App() {
             path="/input"
           >
             <InputForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows InputForm else shows LoginPage
+            exact
+            path="/display"
+          >
+            <TableDisplay />
           </ProtectedRoute>
 
           <Route

@@ -28,6 +28,10 @@ function Nav() {
               Home
             </Link>
 
+            <Link className="navLink" to="/display">
+              History
+            </Link>
+
             <Link className="navLink" to="/input">
               New Run
             </Link>

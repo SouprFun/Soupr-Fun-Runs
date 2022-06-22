@@ -1,9 +1,10 @@
 .container{
     text-align: center;
-    padding: 20px;
+    display: block;
+    
     background-color: lightgray;
 }
 
-.input{
-    margin: 10px;
+.date{
+    margin-top: 20px;
 }

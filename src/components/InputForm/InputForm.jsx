@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react'
 import "./InputForm.css"
+import { useDispatch, useSelector } from 'react-redux';
 
 //MUI
 import TextField from '@mui/material/TextField';
@@ -32,11 +33,13 @@ function InputForm() {
   const [categories, setCategories] = useState([]);
   const [date, setDate] = useState(new Date());
   const [distance, setDistance] = useState();
-  const [time, setTime] = useState()
-  const [note, setNote] = useState('')
+  const [time, setTime] = useState();
+  const [note, setNote] = useState('');
+  const dispatch = useDispatch();
 
   //handles change for selector box
   const inputChange = (event) => {
+    console.log("event and value, ", event, value);
     const {
       target: { value },
     } = event;
@@ -55,13 +58,23 @@ function InputForm() {
   function clickSubmit() {
     console.log("in click submit");
     console.log("our inputs are: ", distance, time, categories, date, note);
+  
+    // for (let run of runs) {
+    //   let pace = parseFloat((run.time / run.distance) / 60 ).toFixed(2)// formula for pace && actually puts it where it needs to be
+    //   console.log(pace);
+    //   run.pace = `${Math.floor(pace)}' ${Math.round((pace - Math.floor(pace))*60)}"`;
+    //   console.log(run.id, run.pace);
+    // }
+  
+    dispatch({type: "RUNINPUTS", payload: {distance, time: time, date: date, note: note}})
+    dispatch({type: "CATEGORIES", payload: {categories}})
   }
 
   return (
     <div className="container">
       <h3>Pace will be calculated</h3>
       <div className='inputs'>
-        <TextField
+        <TextField sx={{marginRight: 3 }}
           helperText="Enter Run Distance in Miles"
           className="input"
           type="number"
@@ -69,7 +82,7 @@ function InputForm() {
           value={distance}
           onChange={(event) => setDistance(event.target.value)}
         />
-        <TextField
+        <TextField sx={{marginRight: 3 }}
           helperText="Enter Run Time"
           color='success'
           className="input"
@@ -78,9 +91,9 @@ function InputForm() {
           value={time}
           onChange={(event) => setTime(event.target.value)}
         />
-        <FormControl className='input' sx={{ m: 1, width: 400 }}>
+        <FormControl className='input' sx={{ m: 0, width: 400 }}>
           <InputLabel >Run Categories</InputLabel>
-          <Select
+          <Select sx={{marginTop: 0 }}
             labelId="demo-multiple-checkbox-label"
             id="demo-multiple-checkbox"
             multiple
@@ -102,7 +115,7 @@ function InputForm() {
 
       <div className='date'>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <DateTimePicker
+          <DateTimePicker 
             label="Date&Time picker"
             value={date}
             onChange={dateChange}
@@ -112,7 +125,7 @@ function InputForm() {
       </div>
 
       <div className='notes'>
-        <TextField
+        <TextField sx={{marginTop: 5, width: 300  }}
           helperText="Enter any notes here"
           className="input"
           id='notesInput'

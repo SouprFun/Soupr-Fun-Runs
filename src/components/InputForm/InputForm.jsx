@@ -66,7 +66,7 @@ function InputForm() {
     //   console.log(run.id, run.pace);
     // }
   
-    dispatch({type: "RUNINPUTS", payload: {distance, time: time, date: date, note: note}})
+    dispatch({type: "RUN_INPUTS", payload: {distance, time, date, note}})
     dispatch({type: "CATEGORIES", payload: {categories}})
   }
 

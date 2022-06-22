@@ -32,7 +32,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
     console.log("req.user is:", req.user);
     const query = `INSERT INTO "runs" ("user_id", "distance", "time", "pace", "cat_id", "date", "notes")
-    VALUES ($1, $2, $3, $4, $5, $6, $7);`
+    VALUES ($1, $2, $3, $4, $5, $6, $7);`;
     pool
         .query(query, [req.user.id, req.body.distance, req.body.time, req.body.pace, req.body.cat_id, req.body.date, req.body.notes])
         .then((results) => res.send(results.rows))
@@ -41,6 +41,17 @@ router.post('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
 });
+
+router.post('/cat'), rejectUnauthenticated, (req, res) => {
+    console.log("in posting cats", req.body, req.user.id);
+    const query = `INSERT INTO "runs_categories" ("user_id", "cat_id")
+    VALUES($1, $2);`;
+    // for (let cat of req.body){
+
+    // }
+    // pool
+    //     .query(query, [req.user.id, cat] )
+}
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in delete', req.params, req.user.id)

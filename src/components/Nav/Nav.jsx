@@ -29,7 +29,11 @@ function Nav() {
             </Link>
 
             <Link className="navLink" to="/display">
-              History
+              My Runs
+            </Link>
+
+            <Link className="navLink" to="/graph">
+              Graphs
             </Link>
 
             <Link className="navLink" to="/input">

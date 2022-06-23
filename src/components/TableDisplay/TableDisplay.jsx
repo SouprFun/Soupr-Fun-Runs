@@ -37,14 +37,12 @@ function TableDisplay() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_RUNS' });
-        EnhancedTable();
-        EnhancedTableHead();
     }, [])
 
     
     const rows = useSelector((store) => store.run);
     console.log("rows is: ", rows);
-/*
+
     function descendingComparator(a, b, orderby) {
         if (b[orderBy] < a[orderBy]) {
             return -1;
@@ -371,11 +369,11 @@ function TableDisplay() {
             </Box>
         )
     }
-*/
+
     return (
         <div>
             <h1>Run History:</h1>
-            <EnhancedTable />
+            {/* <EnhancedTable /> */}
         </div>
     )
 }

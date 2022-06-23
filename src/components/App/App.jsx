@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import TableDisplay from '../TableDisplay/TableDisplay';
 
 import './App.css';
+import Graph from '../Graph/Graph';
 
 function App() {
   const dispatch = useDispatch();
@@ -67,6 +68,14 @@ function App() {
             path="/input"
           >
             <InputForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows InputForm else shows LoginPage
+            exact
+            path="/graph"
+          >
+            <Graph />
           </ProtectedRoute>
 
           <ProtectedRoute

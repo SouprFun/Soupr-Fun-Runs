@@ -27,8 +27,15 @@ function InputForm() {
     { id: 3, name: 'Fun' },
     { id: 4, name: 'Casual/Social' },
     { id: 5, name: 'Race' }
-  ]
+  ];
 
+
+  useEffect(() => {
+      dispatch({ type: 'FETCH_RUNS' });
+  }, [])
+
+  const runs = useSelector((store) => store.run);
+  console.log(runs);
 
   //states
   const [categories, setCategories] = useState([]);
@@ -150,6 +157,11 @@ function InputForm() {
       <div className='inputSubmit'>
         <Button variant="contained" color="success" onClick={() => clickSubmit()} >Submit</Button>
       </div>
+      <ul>
+        {runs.map((run) => {
+          <li> distance: ${run.distance}, time: ${run.time}, pace: ${run.pace} </li>
+        })}
+      </ul>
     </div>
   );
 }

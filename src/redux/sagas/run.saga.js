@@ -15,7 +15,7 @@ function* fetchRuns() {
     try {
 
         const response = yield axios.get('/api/runs', config);
-        console.log("response in fetch runs: ", response);
+        console.log("response in fetch runs saga: ", response);
         yield put({ type: 'SET_RUNS', payload: response.data });
     } catch {
         console.log('error in SAGA GETing items.');

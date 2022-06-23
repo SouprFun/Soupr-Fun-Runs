@@ -10,11 +10,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     pool
         //where user_id
         .query(`SELECT * FROM "runs" 
-        JOIN "user" ON runs.user_id = "user"."id"
-        where "user".id = ${req.user.id};`)
+        where "user_id" = ${req.user.id};`)
         .then((results) => {
             res.send(results.rows);
-            console.log(results);
         })
         .catch((error) => {
             console.log('Error making SELECT for runs:', error);

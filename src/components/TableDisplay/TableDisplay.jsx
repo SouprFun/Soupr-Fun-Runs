@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+
+
 //MUI
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
@@ -28,18 +30,21 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import EnhancedTable from './Table';
 
 function TableDisplay() {
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch({ type: 'FETCH_RUNS' });
+        EnhancedTable();
+        EnhancedTableHead();
     }, [])
 
-    let rows = []
-    rows = useSelector(store => store.run)
-    console.log("store is: ", rows);
-
+    
+    const rows = useSelector((store) => store.run);
+    console.log("rows is: ", rows);
+/*
     function descendingComparator(a, b, orderby) {
         if (b[orderBy] < a[orderBy]) {
             return -1;
@@ -366,11 +371,11 @@ function TableDisplay() {
             </Box>
         )
     }
-
+*/
     return (
         <div>
             <h1>Run History:</h1>
-            <EnhancedTable/>
+            <EnhancedTable />
         </div>
     )
 }

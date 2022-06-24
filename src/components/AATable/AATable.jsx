@@ -31,7 +31,8 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Button } from '@mui/material';
 
 function AATable() {
-
+    const [edit, setEdit] = useState(false)
+    
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -51,20 +52,27 @@ function AATable() {
         { id: 6, distance: 13.1, time: 6090, pace: 0, date: '2-23-2022', cat: "long", note: "this was fun" },
     ]
 
-function clickEdit(id){
-    console.log("edit", id);
+function clickEdit(event, id){
+    console.log("edit", id, event);
+    setEdit(!edit);
+
+}
+
+function clickDelete(runid){
+    console.log("delete", runid);
+    dispatch({type: `DELETE`, payload:{id:runid}})
     
 }
 
-function clickDelete(){
-    console.log("delete");
+function clickSubmit(){
+    setEdit(!edit);
 }
 
     return (
         <div>
             <h1>something</h1>
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableContainer component={Paper} sx={{ marginLeft: 20, minWidth: 650, maxWidth: 900 }}>
+                <Table sx={{ minWidth: 650, maxWidth: 900 }} aria-label="simple table">
                     <TableHead>
                         <TableCell>Run #</TableCell>
                         <TableCell>Distance</TableCell>
@@ -81,10 +89,16 @@ function clickDelete(){
                                 <TableCell>{run.distance}</TableCell>
                                 <TableCell>{run.time}</TableCell>
                                 <TableCell>{run.pace}</TableCell>
-                                <TableCell>
-                                    <Button variant="contained" color="warning" onClick={() => clickEdit(run.id)} >Edit</Button>
-                                    <Button variant="contained" color="error" onClick={() => clickDelete()} >Delete</Button>
+                                {edit ? (
+                                    <TableCell>
+                                    <Button variant="contained" color="success" onClick={() => clickSubmit()} >Submit</Button>
                                 </TableCell>
+                                ):(
+                                <TableCell>
+                                    <Button variant="contained" color="warning" onClick={() => clickEdit(event, run.id)} >Edit</Button>
+                                    <Button variant="contained" color="error" onClick={() => clickDelete(run.id)} >Delete</Button>
+                                </TableCell>
+)}
                             </TableRow>
                         ))}
                     </TableBody>

@@ -4,10 +4,11 @@ import axios from 'axios';
 function* runSaga() {
     yield takeLatest('RUN_INPUTS', addRun);
     yield takeLatest('FETCH_RUNS', fetchRuns);
-    yield takeLatest('EDIT_RUNS')
+    yield takeLatest('EDIT_RUNS', editRun);
+    yield takeLatest('DELETE', deleteRun)
 }
 
-function* fetchRuns() {
+function* fetchRuns(action) {
     const config = {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
@@ -15,7 +16,7 @@ function* fetchRuns() {
 
     try {
 
-        const response = yield axios.get('/api/runs', config);
+        const response = yield axios.get('/api/runs');
         console.log("response in fetch runs saga: ", response);
         yield put({ type: 'SET_RUNS', payload: response.data });
     } catch {
@@ -23,14 +24,39 @@ function* fetchRuns() {
     }
 }
 
+function* deleteRun(action) {
+
+    console.log("in delete saga,", action.payload);
+   try {
+        yield axios.delete(`/api/runs/${action.payload.id}`, action.payload);
+        yield put({ type: 'FETCH_RUNS' })
+    } catch {
+        console.log("error in deleteRun saga");
+
+    }
+
+}
+
+function* editRun(action) {
+    console.log("in edit saga,", action.payload);
+    try {
+        yield axios.put('');
+        yield put({ type: 'FETCH_RUNS' })
+    } catch {
+        console.log("error in editRun saga");
+
+    }
+
+}
+
 function* addRun(action) {
     console.log("in add run saga", action.payload);
 
     try {
         yield axios.post('/api/runs', action.payload);
-        const response = yield axios.get('/api/run');
+        const response = yield axios.get('/api/runs');
         console.log("response in addRun saga", response);
-        yield put({type: 'SET_RUNS'})
+        yield put({ type: 'FETCH_RUNS' })
     } catch {
         console.log("error in addRun saga");
     }

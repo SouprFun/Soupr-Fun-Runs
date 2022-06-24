@@ -69,18 +69,18 @@ function InputForm() {
     let pace = time / distance;
     console.log("our inputs are: ", distance, time, categories, date, note);
 
-    let something = []
+    let something = 0
     for (let cat of categories){
         if (cat === "Speed"){
-            something.push(1)
+            something = 1
         }else if (cat === "Long"){
-            something.push(2)
+            something = 2
         }else if (cat === "Fun"){
-            something.push(3)
+            something = 3
         }else if (cat === "Casual/Social"){
-            something.push(4)
+            something = 4
         }else if (cat === "Race"){
-            something.push(5)
+            something = 5
         }
         console.log("this is something: ", something)
       }

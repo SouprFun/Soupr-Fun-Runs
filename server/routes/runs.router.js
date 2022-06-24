@@ -28,19 +28,19 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     5: race
 */
 
-// note: issue with postman logging in... 
 
 router.post('/', rejectUnauthenticated, (req, res) => {
     console.log("in post runs, req.user is:", req.user, req.body);
-    const query = `INSERT INTO "runs" ("user_id", "distance", "time", "pace", "date", "notes")
-    VALUES ($1, $2, $3, $4, $5, $6);`;
+    const query = `INSERT INTO "runs" ("user_id", "distance", "time", "pace", "date", "notes", "cat_id")
+    VALUES ($1, $2, $3, $4, $5, $6, $7);`;
     pool
-        .query(query, [req.user.id, req.body.distance, req.body.time, req.body.pace, req.body.date, req.body.notes])
+        .query(query, [req.user.id, req.body.distance, req.body.time, req.body.pace, req.body.date, req.body.note, req.body.categories])
         .then((results) => res.send(results.rows))
         .catch((error) => {
             console.log('Error making Posting to runs:', error);
             res.sendStatus(500);
         });
+
     // this is to post into the runs_categories table not entirely sure how it is going to work ... 
     // need the run id that is created when run ^^^ is posted 
     // const query2 = `INSERT INTO "runs_categories" ("run_id", "cat_id")
@@ -64,11 +64,11 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 // }
 
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
-    console.log('in delete', req.params, req.user.id)
-    const query = `DELETE FROM runs WHERE runs.id = $1 AND runs.user_id = $2;`
+    console.log('in delete', req.params.id)
+    const query = `DELETE FROM runs WHERE runs.id = $1;`
     pool
-        .query(query, [req.params.id, req.user.id])
-        .then((response) => res.sendStatus(204))
+        .query(query, [req.params.id])
+        .then((response) => res.sendStatus(200))
         .catch(error => {
             console.log(`Error deleting run`, error);
             res.sendStatus(500);
@@ -84,11 +84,11 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 	"distance" = $1, 
 	"time" = $2, 
 	"pace" = $3, 
-	"cat_id" = $4, 
-	"date" = $5, 
-	"notes" = $6
+	"date" = $4, 
+	"notes" = $5,
+	"cat_id" = $6, 
 	WHERE runs.id = $7 AND runs.user_id = $8;`;
-    pool.query(query, [body.distance, body.time, body.pace, body.cat_id, body.date, body.notes, run_id, user])
+    pool.query(query, [body.distance, body.time, body.pace, body.date, body.notes, body.cat_id, run_id, user])
         .then(response => res.sendStatus(200))
         .catch(error => {
             console.log(`Error updating run`, error);

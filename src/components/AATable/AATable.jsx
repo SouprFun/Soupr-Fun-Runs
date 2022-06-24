@@ -46,13 +46,15 @@ function AATable() {
     return (
         <div>
             <h1>something</h1>
-            <TableContainer component={Paper} sx={{ marginLeft: 20, minWidth: 650, maxWidth: 900 }}>
-                <Table sx={{ minWidth: 650, maxWidth: 900 }} aria-label="simple table">
+            <TableContainer component={Paper} sx={{ marginLeft: 20, minWidth: 650, maxWidth: 1500 }}>
+                <Table sx={{ minWidth: 650, maxWidth: 1500 }} aria-label="simple table">
                     <TableHead>
                         <TableCell>Run #</TableCell>
                         <TableCell>Distance</TableCell>
                         <TableCell>Time</TableCell>
                         <TableCell>Pace</TableCell>
+                        <TableCell>Date</TableCell>
+                        <TableCell>Notes</TableCell>
                     </TableHead>
                     <TableBody>
                         {rows.map((run, i) => (<TableItem run={run} i={i} />))}

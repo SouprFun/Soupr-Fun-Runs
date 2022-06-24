@@ -35,6 +35,10 @@ function Nav() {
             <Link className="navLink" to="/graph">
               Graphs
             </Link>
+            
+            <Link className="navLink" to="/test">
+              test
+            </Link>
 
             <Link className="navLink" to="/input">
               New Run

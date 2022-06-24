@@ -23,6 +23,7 @@ import TableDisplay from '../TableDisplay/TableDisplay';
 
 import './App.css';
 import Graph from '../Graph/Graph';
+import AATable from '../AATable/AATable';
 
 function App() {
   const dispatch = useDispatch();
@@ -76,6 +77,14 @@ function App() {
             path="/graph"
           >
             <Graph />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows InputForm else shows LoginPage
+            exact
+            path="/test"
+          >
+            <AATable />
           </ProtectedRoute>
 
           <ProtectedRoute

@@ -2,8 +2,9 @@ import { put, takeEvery, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* runSaga() {
-    yield takeLatest('RUN_INPUTS', addRun)
-    yield takeLatest('FETCH_RUNS', fetchRuns)
+    yield takeLatest('RUN_INPUTS', addRun);
+    yield takeLatest('FETCH_RUNS', fetchRuns);
+    yield takeLatest('EDIT_RUNS')
 }
 
 function* fetchRuns() {

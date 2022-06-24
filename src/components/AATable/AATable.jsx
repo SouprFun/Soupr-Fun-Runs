@@ -29,9 +29,9 @@ import { visuallyHidden } from '@mui/utils';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Button } from '@mui/material';
+import TableItem from './TableItem';
 
 function AATable() {
-    const [edit, setEdit] = useState(false)
     
     const dispatch = useDispatch();
 
@@ -42,31 +42,6 @@ function AATable() {
     
     const rows = useSelector((store) => store.run);
     console.log("rows is: ", rows);
-
-    const runs = [
-        { id: 1, distance: 5, time: 2400, pace: 0, date: '1-20-2022', cat: "long", note: "this was fun" },
-        { id: 2, distance: 10, time: 4800, pace: 0, date: '1-22-2022', cat: "long", note: "this was long" },
-        { id: 3, distance: 1, time: 320, pace: 0, date: '1-24-2022', cat: "fast", note: "this was fast" },
-        { id: 4, distance: 8, time: 3600, pace: 0, date: '1-26-2022', cat: "long", note: "this was fun" },
-        { id: 5, distance: 5, time: 2100, pace: 0, date: '2-20-2022', cat: "long", note: "this was fun" },
-        { id: 6, distance: 13.1, time: 6090, pace: 0, date: '2-23-2022', cat: "long", note: "this was fun" },
-    ]
-
-function clickEdit(event, id){
-    console.log("edit", id, event);
-    setEdit(!edit);
-
-}
-
-function clickDelete(runid){
-    console.log("delete", runid);
-    dispatch({type: `DELETE`, payload:{id:runid}})
-    
-}
-
-function clickSubmit(){
-    setEdit(!edit);
-}
 
     return (
         <div>
@@ -80,27 +55,7 @@ function clickSubmit(){
                         <TableCell>Pace</TableCell>
                     </TableHead>
                     <TableBody>
-                        {rows.map((run, i) => (
-                            <TableRow
-                                key={run.id}
-                                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                            >
-                                <TableCell>{i+1}</TableCell>
-                                <TableCell>{run.distance}</TableCell>
-                                <TableCell>{run.time}</TableCell>
-                                <TableCell>{run.pace}</TableCell>
-                                {edit ? (
-                                    <TableCell>
-                                    <Button variant="contained" color="success" onClick={() => clickSubmit()} >Submit</Button>
-                                </TableCell>
-                                ):(
-                                <TableCell>
-                                    <Button variant="contained" color="warning" onClick={() => clickEdit(event, run.id)} >Edit</Button>
-                                    <Button variant="contained" color="error" onClick={() => clickDelete(run.id)} >Delete</Button>
-                                </TableCell>
-)}
-                            </TableRow>
-                        ))}
+                        {rows.map((run, i) => (<TableItem run={run} i={i} />))}
                     </TableBody>
                 </Table>
             </TableContainer>

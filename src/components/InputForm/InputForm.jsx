@@ -84,9 +84,14 @@ function InputForm() {
         }
         console.log("this is something: ", something)
       }
-    //unfinished
     dispatch({ type: "RUN_INPUTS", payload: { distance, time, pace, date, note, categories: something } })
     // dispatch({ type: "CATEGORIES", payload: { categories } })
+
+      setCategories([]);
+      setDistance(0);
+      setTime(0);
+      setDate(new Date());
+      setNote("")
   }
 
   return (

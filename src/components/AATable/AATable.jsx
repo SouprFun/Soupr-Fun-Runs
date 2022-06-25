@@ -46,7 +46,7 @@ function AATable() {
     return (
         <div>
             <h1>something</h1>
-            <TableContainer component={Paper} sx={{ marginLeft: 20, minWidth: 650, maxWidth: 1500 }}>
+            <TableContainer component={Paper} sx={{ marginLeft: 5, minWidth: 650, maxWidth: 1500 }}>
                 <Table sx={{ minWidth: 650, maxWidth: 1500 }} aria-label="simple table">
                     <TableHead>
                         <TableCell>Run #</TableCell>
@@ -54,6 +54,7 @@ function AATable() {
                         <TableCell>Time</TableCell>
                         <TableCell>Pace</TableCell>
                         <TableCell>Date</TableCell>
+                        <TableCell>Category</TableCell>
                         <TableCell>Notes</TableCell>
                     </TableHead>
                     <TableBody>

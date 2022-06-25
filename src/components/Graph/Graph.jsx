@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-//import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack } from 'victory';
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, VictoryStack, VictoryLine } from 'victory';
 
 
 function Graph(){
@@ -24,7 +24,7 @@ function Graph(){
     return (
         <div>
             <h1>Graphs go here</h1>
-            <VictoryChart domainPadding={30}>
+            <VictoryChart domainPadding={{y: 20}}>
                 <VictoryAxis 
                 tickValues={[0, 2, 4, 6, 8, 10]}
                 />
@@ -32,7 +32,7 @@ function Graph(){
                 dependentAxis
                 tickFormat={(x) => parseFloat(x/60).toFixed(2)}
                 />
-                <VictoryBar
+                <VictoryLine
                 data={data}
                 x="distance"
                 y="pace"

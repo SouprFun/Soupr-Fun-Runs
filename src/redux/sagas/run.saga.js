@@ -4,7 +4,7 @@ import axios from 'axios';
 function* runSaga() {
     yield takeLatest('RUN_INPUTS', addRun);
     yield takeLatest('FETCH_RUNS', fetchRuns);
-    yield takeLatest('EDIT_RUNS', editRun);
+    yield takeLatest('EDIT_RUN', editRun);
     yield takeLatest('DELETE', deleteRun)
 }
 
@@ -40,7 +40,7 @@ function* deleteRun(action) {
 function* editRun(action) {
     console.log("in edit saga,", action.payload);
     try {
-        yield axios.put('');
+        yield axios.put(`/api/runs/${action.payload.id}`, action.payload);
         yield put({ type: 'FETCH_RUNS' })
     } catch {
         console.log("error in editRun saga");

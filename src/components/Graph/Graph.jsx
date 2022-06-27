@@ -40,14 +40,14 @@ function Graph() {
 
     let data = [];
     let data2 = [];
-    let datum = [];
+    //let datum = [];
     for (let i = 0; i < runs.length; i++) {
         data.push({ distance: runs[i].distance, pace: runs[i].pace })
         data2.push({ id: i, pace: runs[i].pace })
-        datum.push({ y: runs[i].pace, x: i})
+        //datum.push({ y: runs[i].pace, x: i})
     }
 
-    console.log("datum:", datum);
+    // console.log("datum:", datum);
     console.log("datum.y, datum.x:", );
 
     //console.log("data 2", data2);
@@ -99,7 +99,7 @@ function Graph() {
                         <VictoryVoronoiContainer
                         responsive={false} 
                         voronoiDimension="x"
-                        labels={( datum ) => `y: ${datum.y}`}
+                        labels={({ datum }) => `x: ${datum.id} y: ${datum.pace}`}
                       />
 
                         // <VictoryVoronoiContainer

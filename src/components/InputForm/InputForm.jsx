@@ -69,6 +69,10 @@ function InputForm() {
     let pace = time / distance;
     console.log("our inputs are: ", distance, time, categories, date, note);
 
+    if (note === ""){
+      setNote('no notes')
+    }
+
     let something = 0
     for (let cat of categories){
         if (cat === "Speed"){
@@ -81,7 +85,9 @@ function InputForm() {
             something = 4
         }else if (cat === "Race"){
             something = 5
-        }
+        }else if (cat === []){
+          something = 6
+      }
         console.log("this is something: ", something)
       }
     dispatch({ type: "RUN_INPUTS", payload: { distance, time, pace, date, note, categories: something } })

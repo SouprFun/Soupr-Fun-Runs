@@ -8,7 +8,7 @@ import TableRow from '@mui/material/TableRow';
 
 
 function TableItem({ run, i }) {
-    console.log("run: ", run.cat_id);
+    
     const dispatch = useDispatch();
     const [edit, setEdit] = useState(false);
     const [distEd, setDistEd] = useState(run.distance);
@@ -17,19 +17,19 @@ function TableItem({ run, i }) {
     const [dateEd, setDateEd] = useState(run.date);
     const [noteEd, setNoteEd] = useState(run.notes);
     const [catEd, setCatEd] = useState(run.cat_id);
-    //let something = 0
-    // if (catEd === "Speed"){
-    //     something = 1
-    // }else if (catEd === "Long"){
-    //     something = 2
-    // }else if (catEd === "Fun"){
-    //     something = 3
-    // }else if (catEd === "Casual/Social"){
-    //     something = 4
-    // }else if (catEd === "Race"){
-    //     something = 5
-    // }
-
+    let something = 0
+    if (catEd == 1){
+        something = "Speed"
+    }else if (catEd == 2){
+        something = "Long"
+    }else if (catEd == 3){
+        something = "Fun"
+    }else if (catEd == 4){
+        something = "Casual/Social"
+    }else if (catEd == 5){
+        something = "Race"
+    }
+    console.log("run: ", run);
     // useEffect(() => {
     //     setPaceEd(distEd/timeEd)
     // }, [])
@@ -46,6 +46,11 @@ function TableItem({ run, i }) {
         console.log("edit", event);
         setEdit(!edit);
 
+    }
+
+    function clickCancel() {
+        setEdit(!edit);
+        console.log(edit);
     }
 
     function clickSubmit() {
@@ -72,6 +77,7 @@ function TableItem({ run, i }) {
                     <TableCell><input value={noteEd} onChange={(event) => setNoteEd(event.target.value)}></input></TableCell>
                     <TableCell>
                         <Button variant="contained" color="success" onClick={() => clickSubmit()} >Submit</Button>
+                        <Button variant="contained" color="primary" onClick={() => clickCancel()} >Cancel</Button>
                     </TableCell>
                 </>
             ) : (
@@ -81,7 +87,7 @@ function TableItem({ run, i }) {
                     <TableCell>{run.time} seconds</TableCell>
                     <TableCell>{run.pace} seconds per mile</TableCell>
                     <TableCell>{run.date}</TableCell>
-                    <TableCell>{run.cat_id}</TableCell>
+                    <TableCell>{run.run_type}</TableCell>
                     <TableCell>{run.notes}</TableCell>
 
                     <TableCell>

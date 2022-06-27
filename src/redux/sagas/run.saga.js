@@ -20,7 +20,7 @@ function* fetchRuns(action) {
         console.log("response in fetch runs saga: ", response);
         yield put({ type: 'SET_RUNS', payload: response.data });
     } catch {
-        console.log('error in SAGA GETing items.');
+        console.log('error in SAGA GETing runs.');
     }
 }
 

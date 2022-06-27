@@ -9,9 +9,10 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     console.log("req.user is:", req.user);
     pool
         //where user_id
-        .query(`SELECT * FROM "runs" 
-        where "user_id" = ${req.user.id}
-        ORDER BY id;`)
+        .query(`SELECT * FROM runs 
+        JOIN categories ON runs.cat_id = categories.category_id
+        WHERE user_id = ${req.user.id}
+        ORDER BY runs.id;`)
         .then((results) => {
             res.send(results.rows);
         })
@@ -20,6 +21,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
 });
+
 
 /* category ids:
     1: speed

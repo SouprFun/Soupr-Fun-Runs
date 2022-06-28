@@ -23,8 +23,6 @@ function Graph() {
     const dispatch = useDispatch()
     const runs = useSelector((store) => store.run)
     console.log("in graph runs: ", runs);
-    const [selectX, setSelectX] = useState('distance')
-    const [selectY, setSelectY] = useState('time')
     const [double, setDouble] = useState(false);
 
     
@@ -47,12 +45,12 @@ function Graph() {
             <h1>Graphs go here</h1>
             <Button variant="contained" color="success" onClick={() => setDouble(!double)} >Second Graph</Button>
             {double ? (
-                <GraphItem runs={runs} selectX={selectX} selectY={selectY} />
+                <GraphItem runs={runs} />
             ):(
-                <>
-                <GraphItem runs={runs} selectX={selectX} selectY={selectY} />
-                <GraphItem runs={runs} selectX={selectX} selectY={selectY} />
-                </>
+                <div>
+                <GraphItem runs={runs} />
+                <GraphItem runs={runs} />
+                </div>
             )}
         </div> // graph container
     )

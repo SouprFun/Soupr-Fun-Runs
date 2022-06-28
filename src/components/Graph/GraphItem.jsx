@@ -17,8 +17,9 @@ import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 
 
-function GraphItem({runs, selectX, selectY}){
-
+function GraphItem({runs}){
+    const [selectX, setSelectX] = useState('distance')
+    const [selectY, setSelectY] = useState('time')
     //handles selectorbox for the y-axis
     const handleYAxis = (event) => {
         setSelectY(event.target.value);
@@ -30,7 +31,7 @@ function GraphItem({runs, selectX, selectY}){
         setSelectX(event.target.value);
         console.log("x-axis is: ", selectX);
     };
-    
+
     return(
         <div className='graph1'>
                 <div>
@@ -66,6 +67,8 @@ function GraphItem({runs, selectX, selectY}){
                         width={800}
                         domainPadding={20}
                         padding={{ left: 90, top: 50, right: 10, bottom: 50 }}
+                        minDomain={{ y: 0 }}
+                        theme={VictoryTheme.material}
                         containerComponent={
                             <VictoryVoronoiContainer
                                 responsive={false}
@@ -77,14 +80,11 @@ function GraphItem({runs, selectX, selectY}){
                             pace: ${datum.pace}
                             `)}
                             />
-
                         }
-                        minDomain={{ y: 0 }}
-
-                        theme={VictoryTheme.material}
+                        
                     >
                         <VictoryAxis
-                            label="Run #"
+                            label={selectX}
                             style={{
                                 axisLabel: { padding: 30, fontSize: 20 }
                             }}
@@ -92,7 +92,7 @@ function GraphItem({runs, selectX, selectY}){
                         />
                         <VictoryAxis
                             dependentAxis
-                            label="pace"
+                            label={selectY}
                             style={{
                                 axisLabel: { padding: 40, fontSize: 20 }
                             }}

@@ -27,6 +27,10 @@ function Nav() {
             <Link className="navLink" to="/user">
               Home
             </Link>
+            
+            <Link className="navLink" to="/input">
+              New Run
+            </Link>
 
             <Link className="navLink" to="/display">
               My Runs
@@ -38,10 +42,6 @@ function Nav() {
             
             <Link className="navLink" to="/test">
               test
-            </Link>
-
-            <Link className="navLink" to="/input">
-              New Run
             </Link>
 
             <LogOutButton className="navLink" />

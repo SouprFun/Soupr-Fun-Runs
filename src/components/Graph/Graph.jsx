@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import "./Graph.css";
 //victory charts
 import {
     VictoryChart, VictoryAxis, VictoryTheme, VictoryVoronoiContainer,
     VictoryLine, VictoryContainer, VictoryScatter,
 } from 'victory';
+
 //MUI
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -20,33 +21,62 @@ function Graph() {
     const dispatch = useDispatch()
     const runs = useSelector((store) => store.run)
     console.log("in graph runs: ", runs);
-    const [selectX, setSelectX] = useState(1)
-    const [selectY, setSelectY] = useState(1)
-
+    const [selectX, setSelectX] = useState('distance')
+    const [selectY, setSelectY] = useState('time')
+    const [double, setDouble] = useState(false);
+    // let data = [];
+    // let data2 = [];
     //const graphContainer = createContainer("voronoi", "container")
 
     //handles selectorbox for the y-axis
     const handleYAxis = (event) => {
         setSelectY(event.target.value);
-        console.log(selectY);
+        console.log("y-axis is: ",selectY);
     };
 
     //handles selectorbox for the X-axis
     const handleXAxis = (event) => {
         setSelectX(event.target.value);
-        console.log(selectX);
+        console.log("x-axis is: ",selectX);
     };
 
-
-    let data = [];
-    let data2 = [];
-    //let datum = [];
-    for (let i = 0; i < runs.length; i++) {
-        data.push({ distance: runs[i].distance, pace: runs[i].pace })
-        data2.push({ id: i, pace: runs[i].pace })
-        //datum.push({ y: runs[i].pace, x: i})
+    // function handleDouble() {
+    //     setDouble(!double)
+    // }
+    
+    // for (let i = 0; i < runs.length; i++) {
+    //     runs[i].push({ index: i,})
+    // }
+    console.log("new runs: ", runs);
+    /*
+    x:
+        1:id
+        2:distance
+    y:
+        1:distance
+        2:time
+        3:pace
+    
+    function graphData(){
+        //x: id, y: pace
+        if(selectX===1 && selectY == 1){
+            for (let i = 0; i < runs.length; i++) {
+                data.push({ id: i, pace: runs[i].pace })
+            }
+        // x: distance, y: pace
+        } else if(selectX===2 && selectY == 1){
+            for (let i = 0; i < runs.length; i++) {
+                data.push({ id: i, pace: runs[i].pace })
+            }
+        }
+        
     }
-
+    
+     for (let i = 0; i < runs.length; i++) {
+         data.push({ distance: runs[i].distance, pace: runs[i].pace })
+         data2.push({ id: i, pace: runs[i].pace })
+     }
+*/
     //console.log("data 2", data2);
     //console.log("data for graph", data);
 
@@ -55,20 +85,20 @@ function Graph() {
     }, [])
 
     return (
-        <div>
+        <div className='graphPage'>
             <h1>Graphs go here</h1>
-            <div>
+            <div className='graph1'>
 
                 <FormControl sx={{ marginLeft: 10 }}>
                     <InputLabel id="">Y-Axis</InputLabel>
                     <Select
-                        value={selectX}
-                        label="X-Axis"
+                        value={selectY}
+                        label="Y-Axis"
                         onChange={handleYAxis}
                     >
-                        <MenuItem value={1}>Distance</MenuItem>
-                        <MenuItem value={2}>Time</MenuItem>
-                        <MenuItem value={3}>Pace</MenuItem>
+                        <MenuItem value={'distance'}>Distance</MenuItem>
+                        <MenuItem value={'time'}>Time</MenuItem>
+                        <MenuItem value={'pace'}>Pace</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -79,8 +109,8 @@ function Graph() {
                         label="X-Axis"
                         onChange={handleXAxis}
                     >
-                        <MenuItem value={1}>Run #</MenuItem>
-                        <MenuItem value={2}>Distance</MenuItem>
+                        <MenuItem value={'id'}>Run #</MenuItem>
+                        <MenuItem value={'distance'}>Distance</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -95,13 +125,18 @@ function Graph() {
                         <VictoryVoronoiContainer
                         responsive={false} 
                         voronoiDimension="x"
-                        labels={({ datum }) => `x: ${datum.id} y: ${datum.pace}`}
+                        labels={({ datum }) => (`
+                            Run #: ${datum.id} 
+                            dist: ${datum.distance} 
+                            Time: ${datum.time} 
+                            pace: ${datum.pace}
+                            `)}
                       />
-                      
+
                     }
                     minDomain={{ y: 0 }}
 
-                    theme={VictoryTheme.warm}
+                    theme={VictoryTheme.material}
                 >
                     <VictoryAxis
                         label="Run #"
@@ -144,16 +179,15 @@ function Graph() {
                         colorScale={"warm"}
                     />*/}
                     <VictoryLine
-                        data={data2}
+                        data={runs}
+                        x={selectX}
+                        y={selectY}
                         style={{
                             data: {
                                 stroke: "#36f00c",
                                 strokeWidth: (5)
                             }
                         }}
-                        x="id"
-                        y="pace"
-                        colorScale={"warm"}
                     />
                 </VictoryChart>
             </div>

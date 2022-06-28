@@ -22,15 +22,6 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 });
 
-
-/* category ids:
-    1: speed
-    2: long
-    3: fun
-    4: causal/social
-    5: race
-*/
-
 //post
 router.post('/', rejectUnauthenticated, (req, res) => {
     console.log("in post runs, req.user is:", req.user, req.body);
@@ -44,27 +35,9 @@ router.post('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
 
-    // this is to post into the runs_categories table not entirely sure how it is going to work ... 
-    // need the run id that is created when run ^^^ is posted 
-    // const query2 = `INSERT INTO "runs_categories" ("run_id", "cat_id")
-    //     VALUES($1, $2);`;
-    // for (let cat of req.body.categories){
-    //     pool   
-    //         .query(query2, [])
-    // }
+  
 });
 
-// router.post('/cat'), rejectUnauthenticated, (req, res) => {
-//     console.log("in posting cat", req.body, req.user.id);
-//     const query = `INSERT INTO "runs_categories" ("user_id", "cat_id")
-//     VALUES($1, $2);`;
-//     for (let cat of req.body){
-
-
-//         // pool
-//         //     .query(query, [req.user.id, cat] )
-//     }
-// }
 //delete
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log('in delete', req.params.id)

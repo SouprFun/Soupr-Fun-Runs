@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 //victory charts
 import {
-    VictoryBar, VictoryChart, VictoryAxis, VictoryTheme, createContainer,
-    VictoryVoronoiContainer, VictoryLine, VictoryContainer, VictoryScatter,
+    VictoryChart, VictoryAxis, VictoryTheme, VictoryVoronoiContainer,
+    VictoryLine, VictoryContainer, VictoryScatter,
 } from 'victory';
 //MUI
 import Box from '@mui/material/Box';
@@ -46,9 +46,6 @@ function Graph() {
         data2.push({ id: i, pace: runs[i].pace })
         //datum.push({ y: runs[i].pace, x: i})
     }
-
-    // console.log("datum:", datum);
-    console.log("datum.y, datum.x:", );
 
     //console.log("data 2", data2);
     //console.log("data for graph", data);
@@ -95,19 +92,12 @@ function Graph() {
                     domainPadding={20}
                     padding={{ left: 90, top: 50, right: 10, bottom: 50 }}
                     containerComponent={
-                        //<VictoryContainer responsive={false} />
                         <VictoryVoronoiContainer
                         responsive={false} 
                         voronoiDimension="x"
                         labels={({ datum }) => `x: ${datum.id} y: ${datum.pace}`}
                       />
-
-                        // <VictoryVoronoiContainer
-                        //     responsive={false}
-                        //     mouseFollowTooltips
-                        //     voronoiDimension="y"
-                        //     labels={(datum) => { `y: ${datum.y}`}}
-                        // /> 
+                      
                     }
                     minDomain={{ y: 0 }}
 
@@ -128,7 +118,8 @@ function Graph() {
                         }}
                         tickFormat={(x) => parseFloat(x / 100).toFixed(2)}
                     />
-                    {/*<VictoryLine
+                    {/*
+                    <VictoryLine
                         data={data}
                         style={{
                             data: {
@@ -140,7 +131,7 @@ function Graph() {
                         y="pace"
                         colorScale={"warm"}
                     />
-                   } <VictoryScatter
+                    <VictoryScatter
                         data={data}
                         style={{
                             data: {
@@ -154,7 +145,6 @@ function Graph() {
                     />*/}
                     <VictoryLine
                         data={data2}
-                        labels={({ datum }) => datum.x}
                         style={{
                             data: {
                                 stroke: "#36f00c",

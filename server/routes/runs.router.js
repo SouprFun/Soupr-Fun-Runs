@@ -10,7 +10,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     pool
         //where user_id
         .query(`SELECT * FROM runs 
-        JOIN categories ON runs.cat_id = categories.category_id
+        LEFT JOIN categories ON runs.cat_id = categories.category_id
         WHERE user_id = ${req.user.id}
         ORDER BY runs.id;`)
         .then((results) => {

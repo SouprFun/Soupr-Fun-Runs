@@ -65,32 +65,34 @@ function InputForm() {
   //handles the submit button click
   function clickSubmit() {
     console.log("in click submit");
-
+    let notes = note
     let pace = time / distance;
     console.log("our inputs are: ", distance, time, categories, date, note);
 
+    console.log("note is", note);
+    //for if they left the notes box blank
     if (note === ""){
-      setNote('no notes')
+      console.log("in no note")
+      notes = 'no notes for this run'
     }
-
-    let something = 0
-    for (let cat of categories){
-        if (cat === "Speed"){
+    console.log("not after no note", note);
+    //starts at 6 if they left the selector empty
+    let something = 6
+      console.log(categories);
+        if (categories === "Speed"){
             something = 1
-        }else if (cat === "Long"){
+        }else if (categories === "Long"){
             something = 2
-        }else if (cat === "Fun"){
+        }else if (categories === "Fun"){
             something = 3
-        }else if (cat === "Casual/Social"){
+        }else if (categories === "Casual/Social"){
             something = 4
-        }else if (cat === "Race"){
+        }else if (categories === "Race"){
             something = 5
-        }else if (cat === []){
-          something = 6
-      }
-        console.log("this is something: ", something)
-      }
-    dispatch({ type: "RUN_INPUTS", payload: { distance, time, pace, date, note, categories: something } })
+        }
+    
+    console.log("this is something: ", something)
+    dispatch({ type: "RUN_INPUTS", payload: { distance, time, pace, date, note: notes, categories: something } })
     // dispatch({ type: "CATEGORIES", payload: { categories } })
 
       setCategories([]);

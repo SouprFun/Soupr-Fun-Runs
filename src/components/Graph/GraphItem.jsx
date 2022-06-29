@@ -14,8 +14,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Button from '@mui/material/Button';
-
 
 function GraphItem({runs}){
     const [selectX, setSelectX] = useState('distance')
@@ -33,7 +31,7 @@ function GraphItem({runs}){
     };
 
     return(
-        <div className='graph1'>
+        <div className='graph'>
                 <div>
                     <FormControl sx={{ marginLeft: 10 }}>
                         <InputLabel id="">Y-Axis</InputLabel>
@@ -55,7 +53,7 @@ function GraphItem({runs}){
                             label="X-Axis"
                             onChange={handleXAxis}
                         >
-                            <MenuItem value={'id'}>Run #</MenuItem>
+                            <MenuItem value={'index'}>Run #</MenuItem>
                             <MenuItem value={'distance'}>Distance</MenuItem>
                         </Select>
                     </FormControl>

@@ -3,17 +3,8 @@ import ReactDOM from 'react-dom';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import "./Graph.css";
-//victory charts
-import {
-    VictoryChart, VictoryAxis, VictoryTheme, VictoryVoronoiContainer,
-    VictoryLine, VictoryContainer, VictoryScatter,
-} from 'victory';
 
 //MUI
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import GraphItem from './GraphItem';
 
@@ -31,9 +22,9 @@ function Graph() {
     //     setDouble(!double)
     // }
 
-    // for (let i = 0; i < runs.length; i++) {
-    //     runs[i].push({ index: i,})
-    // }
+    for (let i = 0; i < runs.length; i++) {
+        runs[i].index=i;
+    }
     console.log("new runs: ", runs);
 
     useEffect(() => {
@@ -44,6 +35,7 @@ function Graph() {
         <div className='graphPage'>
             <h1>Graphs go here</h1>
             <Button variant="contained" color="success" onClick={() => setDouble(!double)} >Second Graph</Button>
+            <div>
             {double ? (
                 <GraphItem runs={runs} />
             ):(
@@ -52,6 +44,7 @@ function Graph() {
                 <GraphItem runs={runs} />
                 </div>
             )}
+            </div>
         </div> // graph container
     )
 }

@@ -1,3 +1,7 @@
 .graphPage{
     background-color: rgb(69, 69, 152);
 }
+.graph{
+    display: inline-block;
+    padding-top: 20px;
+}

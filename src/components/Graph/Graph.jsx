@@ -16,12 +16,6 @@ function Graph() {
     console.log("in graph runs: ", runs);
     const [double, setDouble] = useState(false);
 
-    
-
-    // function handleDouble() {
-    //     setDouble(!double)
-    // }
-
     for (let i = 0; i < runs.length; i++) {
         runs[i].index=i;
     }
@@ -37,11 +31,11 @@ function Graph() {
             <Button variant="contained" color="success" onClick={() => setDouble(!double)} >Second Graph</Button>
             <div>
             {double ? (
-                <GraphItem runs={runs} />
+                <GraphItem runs={runs} double={double} num={1}/>
             ):(
                 <div>
-                <GraphItem runs={runs} />
-                <GraphItem runs={runs} />
+                <GraphItem runs={runs} double={double} num={1}/>
+                <GraphItem runs={runs} double={double} num={2}/>
                 </div>
             )}
             </div>

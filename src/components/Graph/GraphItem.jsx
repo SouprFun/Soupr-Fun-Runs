@@ -14,10 +14,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Grid from '@mui/material/Grid';
 
-function GraphItem({runs}){
+function GraphItem({runs, double, num}){
     const [selectX, setSelectX] = useState('distance')
     const [selectY, setSelectY] = useState('time')
+    let color = "#36f00c";
     //handles selectorbox for the y-axis
     const handleYAxis = (event) => {
         setSelectY(event.target.value);
@@ -30,12 +32,23 @@ function GraphItem({runs}){
         console.log("x-axis is: ", selectX);
     };
 
+    if (double){
+
+    }
+
+    if (num === 1 ){
+        color = "#006400"
+    }else {
+        color = "#00008b"
+    }
+
     return(
         <div className='graph'>
                 <div>
                     <FormControl sx={{ marginLeft: 10 }}>
                         <InputLabel id="">Y-Axis</InputLabel>
                         <Select
+                            color='success'
                             value={selectY}
                             label="Y-Axis"
                             onChange={handleYAxis}
@@ -61,6 +74,10 @@ function GraphItem({runs}){
                 </div>
                 <div>
                     <VictoryChart
+                        minWidth={400}
+                        minHeight={400}
+                        maxHeight={1000}
+                        maxWidth={1000}
                         height={800}
                         width={800}
                         domainPadding={20}
@@ -69,17 +86,16 @@ function GraphItem({runs}){
                         theme={VictoryTheme.material}
                         containerComponent={
                             <VictoryVoronoiContainer
-                                responsive={false}
+                                // responsive={false}
                                 voronoiDimension="x"
                                 labels={({ datum }) => (`
-                            Run #: ${datum.id} 
+                            Run #: ${datum.index} 
                             dist: ${datum.distance} 
                             Time: ${datum.time} 
                             pace: ${datum.pace}
                             `)}
                             />
                         }
-                        
                     >
                         <VictoryAxis
                             label={selectX}
@@ -94,16 +110,15 @@ function GraphItem({runs}){
                             style={{
                                 axisLabel: { padding: 40, fontSize: 20 }
                             }}
-                            tickFormat={(x) => parseFloat(x / 100).toFixed(2)}
+                            tickFormat={(x) => parseFloat(x / 60).toFixed(2)}
                         />
-
                         <VictoryLine
                             data={runs}
                             x={selectX}
                             y={selectY}
                             style={{
                                 data: {
-                                    stroke: "#36f00c",
+                                    stroke: color,
                                     strokeWidth: (5)
                                 }
                             }}

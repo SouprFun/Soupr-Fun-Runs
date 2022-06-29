@@ -1,7 +1,8 @@
 .graphPage{
-    background-color: rgb(69, 69, 152);
+    background-color: skyblue;
+    color: #006400;
 }
 .graph{
     display: inline-block;
-    padding-top: 20px;
+    padding-top: 30px;
 }

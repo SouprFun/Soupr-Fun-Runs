@@ -1,8 +1,11 @@
 .graphPage{
-    background-color: skyblue;
-    color: #006400;
+    background-color: #0073FF;
+    color: #009900;
+    align-items: center;
+    text-align: center;
 }
 .graph{
     display: inline-block;
     padding-top: 30px;
 }
+

@@ -6,9 +6,9 @@ import "./Graph.css";
 
 //MUI
 import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
+
 import GraphItem from './GraphItem';
-
-
 
 function Graph() {
     const dispatch = useDispatch()
@@ -17,27 +17,36 @@ function Graph() {
     const [double, setDouble] = useState(false);
 
     for (let i = 0; i < runs.length; i++) {
-        runs[i].index=i;
+        runs[i].index = i;
+        //runs[i].TMin = runs.time/60;
     }
     console.log("new runs: ", runs);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_RUNS' });
-    }, [])
+    }, []);
 
     return (
         <div className='graphPage'>
-            <h1>Graphs go here</h1>
-            <Button variant="contained" color="success" onClick={() => setDouble(!double)} >Second Graph</Button>
+            <h1>Your Runs Graphed</h1>
+            <Button variant="contained" className='double Button' color="success" onClick={() => setDouble(!double)} >Second Graph</Button>
             <div>
-            {double ? (
-                <GraphItem runs={runs} double={double} num={1}/>
-            ):(
-                <div>
-                <GraphItem runs={runs} double={double} num={1}/>
-                <GraphItem runs={runs} double={double} num={2}/>
-                </div>
-            )}
+                {double ? (
+                    <Grid container spacing={0}>
+                        <Grid item xs={12}>
+                            <GraphItem runs={runs} double={double} num={1} />
+                        </Grid>
+                    </Grid>
+                ) : (
+                    <Grid container spacing={0}>
+                        <Grid item xs={6}>
+                            <GraphItem runs={runs} double={double} num={1} />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <GraphItem runs={runs} double={double} num={2} />
+                        </Grid>
+                    </Grid>
+                )}
             </div>
         </div> // graph container
     )

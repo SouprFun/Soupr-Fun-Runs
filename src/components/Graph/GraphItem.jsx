@@ -23,7 +23,7 @@ function GraphItem({ runs, double, num }) {
     let color = "";
     let size = 6;
     let offset = 0;
-    let holder = 0
+
     //let range = {x:[], y:[]};
     
     
@@ -40,11 +40,12 @@ function GraphItem({ runs, double, num }) {
     };
 
     
-    if (!double) {
-        size = 8
+    if (!double) { //if table is doubled
+        size = 800
         offset = 2
+
     }else {
-        size = 12
+        size = 1600
         offset = 0
     }
 
@@ -110,7 +111,7 @@ function GraphItem({ runs, double, num }) {
                 </FormControl>
 
                 <FormControl sx={{ marginLeft: 10 }}>
-                    <InputLabel id="">X-Axis</InputLabel >
+                    <InputLabel sx={{color: 'purple'}} id="">X-Axis</InputLabel >
                     <Select
                     color='warning'
                         value={selectX}
@@ -119,6 +120,7 @@ function GraphItem({ runs, double, num }) {
                     >
                         <MenuItem value={'index'}>Run #</MenuItem>
                         <MenuItem value={'distance'}>Distance</MenuItem>
+                        <MenuItem value={'date'}>Date</MenuItem>
                     </Select>
                 </FormControl>
 
@@ -126,26 +128,20 @@ function GraphItem({ runs, double, num }) {
             {/* <Grid container spacing={0}> */}
                 {/* <Grid item s={12} md={8} lg={6} xl={6}> */}
                     <VictoryChart
-                        //  minWidth={800}
-                        //  minHeight={800}
-                        // maxHeight={1000}
-                        // maxWidth={1000}
                         height={800}
-                        width={800}
-                        //range={range}
+                        width={size}
                         domainPadding={20}
                         padding={{ left: 90, top: 50, right: 10, bottom: 50 }}
                         minDomain={{ y: 0 }}
                         theme={VictoryTheme.material}
                         containerComponent={
                             <VictoryVoronoiContainer
-                                // responsive={false}
                                 voronoiDimension="x"
                                 labels={({ datum }) => (`
                             Run #: ${datum.index} 
                             dist: ${datum.distance} 
-                            Time: ${datum.time} 
-                            pace: ${datum.pace}
+                            Time: ${(datum.time/60).toFixed(2)} 
+                            pace: ${(datum.pace/60).toFixed(2)}
                             `)}
                             />
                         }
@@ -163,7 +159,6 @@ function GraphItem({ runs, double, num }) {
                             style={{
                                 axisLabel: { padding: 40, fontSize: 20 }
                             }}
-                            //tickFormat={(x) => x}
                         />
                         <VictoryLine
                             data={runs}

@@ -114,7 +114,6 @@ function InputForm() {
         />
         <TextField sx={{ marginRight: 3 }}
           helperText="Enter Run Time"
-          color='success'
           className="input"
           type="number"
           label="Time"

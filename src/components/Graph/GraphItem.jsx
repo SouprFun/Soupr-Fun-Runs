@@ -95,13 +95,13 @@ function GraphItem({ runs, double, num }) {
         <div className='graph'>
             <div>
                 <FormControl sx={{ marginLeft: 10 }}>
-                    <InputLabel id="">Y-Axis</InputLabel>
+                    <InputLabel sx={{color: 'warning'}} id="">Y-Axis</InputLabel>
                     <Select
                         color='warning'
                         value={selectY}
                         label="Y-Axis"
                         onChange={handleYAxis}
-                        sx={{color: 'black'}}
+                        sx={{border: 'black'}}
                     >
                         <MenuItem value={'distance'}>Distance</MenuItem>
                         <MenuItem value={'time'}>Time</MenuItem>
@@ -110,8 +110,9 @@ function GraphItem({ runs, double, num }) {
                 </FormControl>
 
                 <FormControl sx={{ marginLeft: 10 }}>
-                    <InputLabel id="">X-Axis</InputLabel>
+                    <InputLabel id="">X-Axis</InputLabel >
                     <Select
+                    color='warning'
                         value={selectX}
                         label="X-Axis"
                         onChange={handleXAxis}

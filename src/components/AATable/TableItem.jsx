@@ -63,7 +63,9 @@ function TableItem({ run, i }) {
     return (
         <TableRow
             key={run.id}
-            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            
+            sx={{ '&:last-child td, &:last-child th': { border: 0 }
+        }}
         >
 
             {edit ? (

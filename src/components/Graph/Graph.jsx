@@ -15,12 +15,14 @@ function Graph() {
     const runs = useSelector((store) => store.run)
     console.log("in graph runs: ", runs);
     const [double, setDouble] = useState(false);
+    let minutes = []
 
     for (let i = 0; i < runs.length; i++) {
         runs[i].index = i;
-        //runs[i].TMin = runs.time/60;
+        
+        //minutes.push(runs.time/60);
     }
-    console.log("new runs: ", runs);
+    console.log("new runs: ", runs, minutes);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_RUNS' });
@@ -29,7 +31,7 @@ function Graph() {
     return (
         <div className='graphPage'>
             <h1>Your Runs Graphed</h1>
-            <Button variant="contained" className='double Button' color="success" onClick={() => setDouble(!double)} >Second Graph</Button>
+            <Button variant="contained" className='double Button' color="secondary" onClick={() => setDouble(!double)} >Second Graph</Button>
             <div>
                 {double ? (
                     <Grid container spacing={0}>

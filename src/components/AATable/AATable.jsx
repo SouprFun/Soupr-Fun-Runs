@@ -5,8 +5,6 @@ import "./table.css";
 
 
 //MUI
-import { createTheme } from '@mui/material/styles';
-import { makeStyles } from '@mui/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -16,32 +14,19 @@ import Paper from '@mui/material/Paper';
 import TableItem from './TableItem';
 
 function AATable() {
-    
-    // const useStyles = makeStyles((theme) =>({
-    //     tableContainer:{
-    //         borderRadius: 15,
-    //         margin: "10px 10px",
-    //     },
-    //     tableHeaderCell: {
-    //         fontWeight: 'bold',
-    //         backgroundColor: theme.palette.primary.dark,
-    //         color: theme.palette.getContrastText(theme.primary.dark)
-    //     }
-    // }))
+ 
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch({ type: 'FETCH_RUNS' });
     }, [])
 
-    //const classes = useStyles()
-
     const rows = useSelector((store) => store.run);
     console.log("rows is: ", rows);
 
     return (
         <div>
-            <h1>Your Past Runs</h1>
+            <h1>Your Runs</h1>
             <TableContainer id='tableContainer' component={Paper} sx={{ marginLeft: 5}}>
                 <Table sx={{  }} aria-label="simple table">
                     <TableHead>

@@ -54,44 +54,7 @@ function GraphItem({ runs, double, num }) {
     } else {
         color = "#73FF00"
     }
-    /*
-    if(selectX === 'index'){
-            range.x = [0, runs.length -1];
-    }else if (selectX === 'distance'){
-        for (let run of runs){
-            if (holder < run.distance){
-                holder = run.distance;
-
-            }
-        }
-        range.x = [0, holder];
-    }
-
-    if (selectY === 'distance'){
-        for (let run of runs){
-            if (holder < run.distance){
-                holder = run.distance;
-            }
-        }
-        range.y = [0, holder];
-
-    }else if (selectY === 'time'){
-        for (let run of runs){
-            if (holder < run.time){
-                holder = run.time;
-            }
-        }
-        range.y = [0, (holder/60).toFixed(0)];
-
-    }else if (selectY === 'time'){
-        for (let run of runs){
-            if (holder < run.pace){
-                holder = run.pace;
-            }
-        }
-        range.y = [0, (holder/60).toFixed(0)]
-    }
-    */
+    
     return (
         <div className='graph'>
             <div>

@@ -38,7 +38,7 @@ function InputForm() {
   //states
   const [categories, setCategories] = useState([]);
   const [date, setDate] = useState(new Date());
-  const [distance, setDistance] = useState();
+  const [distance, setDistance] = useState(0);
   const [time, setTime] = useState();
   const [note, setNote] = useState('');
   const dispatch = useDispatch();
@@ -63,6 +63,10 @@ function InputForm() {
   //handles the submit button click
   function clickSubmit() {
     console.log("in click submit");
+
+    
+
+    
     let notes = note
     let pace = time / distance;
     console.log("our inputs are: ", distance, time, categories, date, note);
@@ -109,11 +113,12 @@ function InputForm() {
           className="input"
           type="number"
           label="Distance"
+          defaultValue=""
           value={distance}
           onChange={(event) => setDistance(event.target.value)}
         />
         <TextField sx={{ marginRight: 3 }}
-          helperText="Enter Run Time"
+          helperText="Enter Run Time (In Seconds)"
           className="input"
           type="number"
           label="Time"

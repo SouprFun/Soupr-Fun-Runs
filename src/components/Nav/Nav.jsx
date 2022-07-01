@@ -32,16 +32,12 @@ function Nav() {
               New Run
             </Link>
 
-            <Link className="navLink" to="/display">
+            <Link className="navLink" to="/runs">
               My Runs
             </Link>
 
             <Link className="navLink" to="/graph">
               Graphs
-            </Link>
-            
-            <Link className="navLink" to="/test">
-              test
             </Link>
 
             <LogOutButton className="navLink" />

@@ -41,9 +41,9 @@ function AATable() {
 
     return (
         <div>
-            <h1>something</h1>
-            <TableContainer className='tableContainer' component={Paper} sx={{ marginLeft: 5, minWidth: 650, maxWidth: 1500 }}>
-                <Table sx={{ minWidth: 650, maxWidth: 1500 }} aria-label="simple table">
+            <h1>Your Past Runs</h1>
+            <TableContainer id='tableContainer' component={Paper} sx={{ marginLeft: 5}}>
+                <Table sx={{  }} aria-label="simple table">
                     <TableHead>
                         <TableCell className='tableHeaderCell'>Run #</TableCell>
                         <TableCell className='tableHeaderCell' >Distance</TableCell>

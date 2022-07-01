@@ -5,6 +5,12 @@
     color: white;
 }
 
-.tableContainer{
+#tableContainer{
     border-radius: 15px;
+    width: 95%;
+    color:white;
+}
+
+.even{
+    background-color: lightblue;
 }

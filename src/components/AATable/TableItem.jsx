@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import TableCell from '@mui/material/TableCell';
 import { Button } from '@mui/material';
 import TableRow from '@mui/material/TableRow';
+import { ClassNames } from '@emotion/react';
 
 
 
@@ -17,6 +18,7 @@ function TableItem({ run, i }) {
     const [dateEd, setDateEd] = useState(run.date);
     const [noteEd, setNoteEd] = useState(run.notes);
     const [catEd, setCatEd] = useState(run.cat_id);
+    let even = ""
     let something = 0
     if (catEd == 1){
         something = "Speed"
@@ -34,7 +36,11 @@ function TableItem({ run, i }) {
     //     setPaceEd(distEd/timeEd)
     // }, [])
 
-    
+    if (i % 2 === 0){
+        even = "even"
+    }else{
+        even = ""
+    }
 
     function clickDelete(runid) {
         console.log("delete", runid);
@@ -63,7 +69,7 @@ function TableItem({ run, i }) {
     return (
         <TableRow
             key={run.id}
-            
+            className={even}
             sx={{ '&:last-child td, &:last-child th': { border: 0 }
         }}
         >
@@ -86,8 +92,8 @@ function TableItem({ run, i }) {
                 <>
                     <TableCell>{i + 1}</TableCell>
                     <TableCell>{run.distance} mile(s)</TableCell>
-                    <TableCell>{run.time} seconds</TableCell>
-                    <TableCell>{run.pace} seconds per mile</TableCell>
+                    <TableCell>{(run.time/60).toFixed(2)} minutes</TableCell>
+                    <TableCell>{(run.pace/60).toFixed(2)} minutes per mile</TableCell>
                     <TableCell>{run.date}</TableCell>
                     <TableCell>{run.run_type}</TableCell>
                     <TableCell>{run.notes}</TableCell>

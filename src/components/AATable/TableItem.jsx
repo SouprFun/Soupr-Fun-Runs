@@ -4,8 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import TableCell from '@mui/material/TableCell';
 import { Button } from '@mui/material';
 import TableRow from '@mui/material/TableRow';
-import { ClassNames } from '@emotion/react';
-
+import moment from "moment";
 
 
 function TableItem({ run, i }) {
@@ -20,6 +19,9 @@ function TableItem({ run, i }) {
     const [catEd, setCatEd] = useState(run.cat_id);
     let even = ""
     let something = 0
+
+    let newDate = moment(dateEd).utc().format('YYYY-MM-DD HH:MM:SS');
+
     if (catEd == 1){
         something = "Speed"
     }else if (catEd == 2){
@@ -32,9 +34,6 @@ function TableItem({ run, i }) {
         something = "Race"
     }
     console.log("run: ", run);
-    // useEffect(() => {
-    //     setPaceEd(distEd/timeEd)
-    // }, [])
 
     if (i % 2 === 0){
         even = "even"
@@ -94,7 +93,7 @@ function TableItem({ run, i }) {
                     <TableCell>{run.distance} mile(s)</TableCell>
                     <TableCell>{(run.time/60).toFixed(2)} minutes</TableCell>
                     <TableCell>{(run.pace/60).toFixed(2)} minutes per mile</TableCell>
-                    <TableCell>{run.date}</TableCell>
+                    <TableCell>{newDate}</TableCell>
                     <TableCell>{run.run_type}</TableCell>
                     <TableCell>{run.notes}</TableCell>
 

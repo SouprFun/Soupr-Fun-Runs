@@ -14,8 +14,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import Grid from '@mui/material/Grid';
-import { blue } from '@mui/material/colors';
+
 
 function GraphItem({ runs, double, num }) {
     const [selectX, setSelectX] = useState(0)

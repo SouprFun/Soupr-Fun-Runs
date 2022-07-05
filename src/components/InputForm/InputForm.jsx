@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 import "./InputForm.css";
 //MUI
@@ -16,6 +17,9 @@ import Button from '@mui/material/Button';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+//Sweet Alerts
+import swal from 'sweetalert';
+
 
 function InputForm() {
   //array of the run categories
@@ -26,10 +30,10 @@ function InputForm() {
     { id: 4, name: 'Casual/Social' },
     { id: 5, name: 'Race' }
   ];
-
+  const history = useHistory();
 
   useEffect(() => {
-      dispatch({ type: 'FETCH_RUNS' });
+    dispatch({ type: 'FETCH_RUNS' });
   }, [])
 
   const runs = useSelector((store) => store.run);
@@ -64,46 +68,65 @@ function InputForm() {
   function clickSubmit() {
     console.log("in click submit");
 
-    
+    if (distance === 0 || distance === "" || time === 0 || time === "" ){
+      swal({
+        title: "Error!",
+        text: "Please enter valid inputs for distance(miles) and time(seconds)",
+        buttons: {
+          cancel: "OK",
+        },
+        icon: "error"
+      });
+      return;
+    }
 
-    
     let notes = note
     let pace = time / distance;
     console.log("our inputs are: ", distance, time, categories, date, note);
 
     console.log("note is", note);
     //for if they left the notes box blank
-    if (note === ""){
+    if (note === "") {
       console.log("in no note")
       notes = 'no notes for this run'
     }
     console.log("not after no note", note);
     //starts at 6 if they left the selector empty
     let something = 6
-      console.log(categories);
-        if (categories === "Speed"){
-            something = 1
-        }else if (categories === "Long"){
-            something = 2
-        }else if (categories === "Fun"){
-            something = 3
-        }else if (categories === "Casual/Social"){
-            something = 4
-        }else if (categories === "Race"){
-            something = 5
-        }
-    
+    console.log(categories);
+    if (categories === "Speed") {
+      something = 1
+    } else if (categories === "Long") {
+      something = 2
+    } else if (categories === "Fun") {
+      something = 3
+    } else if (categories === "Casual/Social") {
+      something = 4
+    } else if (categories === "Race") {
+      something = 5
+    }
+
     console.log("this is something: ", something)
     dispatch({ type: "RUN_INPUTS", payload: { distance, time, pace, date, note: notes, categories: something } })
     // dispatch({ type: "CATEGORIES", payload: { categories } })
 
-      setCategories([]);
-      setDistance(0);
-      setTime(0);
-      setDate(new Date());
-      setNote("")
+    setCategories([]);
+    setDistance(0);
+    setTime(0);
+    setDate(new Date());
+    setNote("")
+
+    swal({
+      title: "Your run has been submited!",
+      text: "would you like to go to add another run, look at your runs, look at your run graphs?",
+      buttons: {
+        cancel: "OK",
+      },
+      icon: "success"
+    })
   }
 
+  
   return (
     <div className="container">
       <h3>Pace will be calculated</h3>

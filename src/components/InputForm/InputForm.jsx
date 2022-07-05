@@ -118,7 +118,6 @@ function InputForm() {
 
     swal({
       title: "Your run has been submited!",
-      text: "would you like to go to add another run, look at your runs, look at your run graphs?",
       buttons: {
         cancel: "OK",
       },
@@ -129,7 +128,8 @@ function InputForm() {
   
   return (
     <div className="container">
-      <h3>Pace will be calculated</h3>
+      <h1> Enter Your Run Here </h1>
+      <p>Pace will be calculated</p>
       <div className='inputs'>
         <TextField sx={{ marginRight: 3 }}
           helperText="Enter Run Distance in Miles"

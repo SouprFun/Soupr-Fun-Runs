@@ -5,6 +5,8 @@ import TableCell from '@mui/material/TableCell';
 import { Button } from '@mui/material';
 import TableRow from '@mui/material/TableRow';
 import moment from "moment";
+//Sweet Alerts
+import swal from 'sweetalert';
 
 
 function TableItem({ run, i }) {
@@ -44,7 +46,13 @@ function TableItem({ run, i }) {
     function clickDelete(runid) {
         console.log("delete", runid);
         dispatch({ type: `DELETE`, payload: { id: runid } })
-
+        swal({
+            title: "This run has been deleted!",
+            buttons: {
+              cancel: "OK",
+            },
+            icon: "success"
+          })
     }
 
     function clickEdit(event,) {
@@ -62,7 +70,13 @@ function TableItem({ run, i }) {
         setEdit(!edit);
         dispatch({ type: "EDIT_RUN", payload: { id: run.id, distance: distEd, time: timeEd, pace: paceEd, date: dateEd, note: noteEd, cat_id: catEd } })
 
-
+        swal({
+            title: "Your run has been edited!",
+            buttons: {
+              cancel: "OK",
+            },
+            icon: "success"
+          })
     }
 
     return (

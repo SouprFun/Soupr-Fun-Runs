@@ -126,7 +126,7 @@ function GraphItem({ runs, double, num }) {
                             Run #: ${datum.index} 
                             Dist: ${datum.distance} 
                             Time: ${datum.time} 
-                            pace: ${datum.pace}
+                            pace: ${(datum.pace).toFixed(2)}
                             `)}
                     />
                 }

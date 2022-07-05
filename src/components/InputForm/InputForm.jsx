@@ -68,7 +68,7 @@ function InputForm() {
   function clickSubmit() {
     console.log("in click submit");
 
-    if (distance === 0 || distance === "" || time === 0 || time === "" ){
+    if (distance === 0 || distance === "" || time === 0 || time === "") {
       swal({
         title: "Error!",
         text: "Please enter valid inputs for distance(miles) and time(seconds)",
@@ -92,7 +92,7 @@ function InputForm() {
     }
     console.log("not after no note", note);
     //starts at 6 if they left the selector empty
-    let something = 6
+    let something = 0
     console.log(categories);
     if (categories === "Speed") {
       something = 1
@@ -104,6 +104,8 @@ function InputForm() {
       something = 4
     } else if (categories === "Race") {
       something = 5
+    } else {
+      something = 6
     }
 
     console.log("this is something: ", something)
@@ -125,13 +127,14 @@ function InputForm() {
     })
   }
 
-  
+
   return (
     <div className="container">
       <h1> Enter Your Run Here </h1>
       <p>Pace will be calculated</p>
       <div className='inputs'>
         <TextField sx={{ marginRight: 3 }}
+          required
           helperText="Enter Run Distance in Miles"
           className="input"
           type="number"
@@ -141,6 +144,7 @@ function InputForm() {
           onChange={(event) => setDistance(event.target.value)}
         />
         <TextField sx={{ marginRight: 3 }}
+          required
           helperText="Enter Run Time (In Seconds)"
           className="input"
           type="number"

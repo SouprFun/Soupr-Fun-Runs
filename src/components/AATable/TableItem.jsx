@@ -5,6 +5,7 @@ import TableCell from '@mui/material/TableCell';
 import { Button } from '@mui/material';
 import TableRow from '@mui/material/TableRow';
 import moment from "moment";
+import TextField from '@mui/material/TextField';
 //Sweet Alerts
 import swal from 'sweetalert';
 
@@ -90,12 +91,12 @@ function TableItem({ run, i }) {
             {edit ? (
                 <>
                     <TableCell>{i + 1}</TableCell>
-                    <TableCell><input value={distEd} onChange={(event) => setDistEd(event.target.value)}></input></TableCell>
-                    <TableCell><input value={timeEd} onChange={(event) => setTimeEd(event.target.value)}></input></TableCell>
+                    <TableCell><TextField value={distEd} onChange={(event) => setDistEd(event.target.value)}></TextField></TableCell>
+                    <TableCell><TextField value={timeEd} onChange={(event) => setTimeEd(event.target.value)}></TextField></TableCell>
                     <TableCell>{paceEd} seconds per mile</TableCell>
-                    <TableCell><input value={dateEd} onChange={(event) => setDateEd(event.target.value)}></input></TableCell>
-                    <TableCell><input value={catEd} onChange={(event) => setCatEd(event.target.value)}></input></TableCell>
-                    <TableCell><input value={noteEd} onChange={(event) => setNoteEd(event.target.value)}></input></TableCell>
+                    <TableCell><TextField value={dateEd} onChange={(event) => setDateEd(event.target.value)}></TextField></TableCell>
+                    <TableCell><TextField value={catEd} onChange={(event) => setCatEd(event.target.value)}></TextField></TableCell>
+                    <TableCell><TextField value={noteEd} onChange={(event) => setNoteEd(event.target.value)}></TextField></TableCell>
                     <TableCell>
                         <Button variant="contained" color="success" onClick={() => clickSubmit()} >Submit</Button>
                         <Button variant="contained" color="primary" onClick={() => clickCancel()} >Cancel</Button>

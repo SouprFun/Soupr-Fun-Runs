@@ -43,7 +43,7 @@ function InputForm() {
   const [categories, setCategories] = useState([]);
   const [date, setDate] = useState(new Date());
   const [distance, setDistance] = useState(0);
-  const [time, setTime] = useState();
+  const [time, setTime] = useState(0);
   const [note, setNote] = useState('');
   const dispatch = useDispatch();
 
@@ -90,26 +90,26 @@ function InputForm() {
       console.log("in no note")
       notes = 'no notes for this run'
     }
-    console.log("not after no note", note);
+    console.log("note after no note", note);
     //starts at 6 if they left the selector empty
     let something = 0
     console.log(categories);
-    if (categories === "Speed") {
+    if (categories === 'Speed') {
       something = 1
-    } else if (categories === "Long") {
+    } else if (categories === 'Long') {
       something = 2
-    } else if (categories === "Fun") {
+    } else if (categories === 'Fun') {
       something = 3
-    } else if (categories === "Casual/Social") {
+    } else if (categories === 'Casual/Social') {
       something = 4
-    } else if (categories === "Race") {
+    } else if (categories === 'Race') {
       something = 5
     } else {
       something = 6
-    }
+    } // something wrong here
 
     console.log("this is something: ", something)
-    dispatch({ type: "RUN_INPUTS", payload: { distance, time, pace, date, note: notes, categories: something } })
+    dispatch({ type: "RUN_INPUTS", payload: { distance, time, pace: (pace).toFixed(2), date, note: notes, categories: something } })
     // dispatch({ type: "CATEGORIES", payload: { categories } })
 
     setCategories([]);

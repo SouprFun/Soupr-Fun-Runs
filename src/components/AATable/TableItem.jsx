@@ -25,18 +25,17 @@ function TableItem({ run, i }) {
 
     let newDate = moment(dateEd).utc().format('YYYY-MM-DD HH:MM:SS');
 
-    if (catEd == 1){
-        something = "Speed"
-    }else if (catEd == 2){
-        something = "Long"
-    }else if (catEd == 3){
-        something = "Fun"
-    }else if (catEd == 4){
-        something = "Casual/Social"
-    }else if (catEd == 5){
-        something = "Race"
-    }
-    console.log("run: ", run);
+    // if (catEd == 1){
+    //     something = "Speed"
+    // }else if (catEd == 2){
+    //     something = "Long"
+    // }else if (catEd == 3){
+    //     something = "Fun"
+    // }else if (catEd == 4){
+    //     something = "Casual/Social"
+    // }else if (catEd == 5){
+    //     something = "Race"
+    // }
 
     if (i % 2 === 0){
         even = "even"

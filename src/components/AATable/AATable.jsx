@@ -28,7 +28,7 @@ function AATable() {
         <div>
             <h1>Your Runs</h1>
             <TableContainer id='tableContainer' component={Paper} sx={{ marginLeft: 5}}>
-                <Table sx={{  }} aria-label="simple table">
+                <Table aria-label="simple table">
                     <TableHead>
                         <TableCell className='tableHeaderCell'>Run #</TableCell>
                         <TableCell className='tableHeaderCell' >Distance</TableCell>

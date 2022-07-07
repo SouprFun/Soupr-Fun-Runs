@@ -19,9 +19,11 @@ CREATE TABLE "runs" (
     "user_id" INT NOT NULL REFERENCES "users",
     "distance" FLOAT NOT NULL,
     "time" INT NOT NULL,
-    "pace" INT NOT NULL,
+    "pace" FLOAT NOT NULL,
     "cat_id" INT REFERENCES "categories",
     "date" TIMESTAMP,
     "notes" VARCHAR
     );
     
+INSERT INTO "categories" ("run_type")
+VALUES ('speed'), ('long'), ('fun'), ('casual/social'), ('race');

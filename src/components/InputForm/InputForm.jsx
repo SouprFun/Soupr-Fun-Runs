@@ -93,20 +93,22 @@ function InputForm() {
     console.log("note after no note", note);
     //starts at 6 if they left the selector empty
     let something = 0
-    console.log(categories);
-    if (categories === 'Speed') {
-      something = 1
-    } else if (categories === 'Long') {
-      something = 2
-    } else if (categories === 'Fun') {
-      something = 3
-    } else if (categories === 'Casual/Social') {
-      something = 4
-    } else if (categories === 'Race') {
-      something = 5
-    } else {
-      something = 6
-    } // something wrong here
+    for (let cat of categories) {
+      console.log(categories);
+      if (cat === 'Speed') {
+        something = 1
+      } else if (cat === 'Long') {
+        something = 2
+      } else if (cat === 'Fun') {
+        something = 3
+      } else if (cat === 'Casual/Social') {
+        something = 4
+      } else if (cat === 'Race') {
+        something = 5
+      } else {
+        something = 6
+      } // something wrong here
+    }
 
     console.log("this is something: ", something)
     dispatch({ type: "RUN_INPUTS", payload: { distance, time, pace: (pace).toFixed(2), date, note: notes, categories: something } })

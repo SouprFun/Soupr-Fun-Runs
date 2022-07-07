@@ -23,19 +23,8 @@ function TableItem({ run, i }) {
     let even = ""
     let something = 0
 
+    //makes the date more readable
     let newDate = moment(dateEd).utc().format('YYYY-MM-DD HH:MM:SS');
-
-    // if (catEd == 1){
-    //     something = "Speed"
-    // }else if (catEd == 2){
-    //     something = "Long"
-    // }else if (catEd == 3){
-    //     something = "Fun"
-    // }else if (catEd == 4){
-    //     something = "Casual/Social"
-    // }else if (catEd == 5){
-    //     something = "Race"
-    // }
 
     if (i % 2 === 0){
         even = "even"
@@ -43,6 +32,7 @@ function TableItem({ run, i }) {
         even = ""
     }
 
+    //handles delete run, sends alert to say successfully deleted run
     function clickDelete(runid) {
         console.log("delete", runid);
         dispatch({ type: `DELETE`, payload: { id: runid } })
@@ -55,17 +45,20 @@ function TableItem({ run, i }) {
           })
     }
 
+    //handles the edit button to change td into inputs
     function clickEdit(event,) {
         console.log("edit", event);
         setEdit(!edit);
 
     }
 
+    //handles the cancel button when editing a run
     function clickCancel() {
         setEdit(!edit);
         console.log(edit);
     }
 
+    //handles the submit button, sends an alert, and dispatches the info to back end
     function clickSubmit() {
         setEdit(!edit);
         dispatch({ type: "EDIT_RUN", payload: { id: run.id, distance: distEd, time: timeEd, pace: paceEd, date: dateEd, note: noteEd, cat_id: catEd } })

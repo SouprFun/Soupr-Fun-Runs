@@ -22,12 +22,15 @@ function GraphItem({ runs, double, num }) {
     let color = "";
     let size = 6;
     let offset = 0;
+
+    //array for y-axis to be used for both run.{key}, and a label for the graph axis
     const yArray = [
         { key: 'distance', label: 'Distance (Miles)' },
         { key: 'time', label: 'Time (Seconds)' },
         { key: 'pace', label: 'Pace (Seconds per Mile)' }
     ]
 
+    //array for x-axis to be used for both run.{key}, and a label for the graph axis
     const xArray = [
         { key: 'index', label: 'Run #' },
         { key: 'distance', label: 'Distance (Miles)' },
@@ -57,18 +60,18 @@ function GraphItem({ runs, double, num }) {
     };
 
 
-    if (!double) { //if table is doubled
+    if (!double) {  //if table is doubled
         size = 800
         offset = 2
 
-    } else {
+    } else {        // if table is not doubled
         size = 1600
         offset = 0
     }
 
-    if (num === 1) {
+    if (num === 1) {    //graph one line color
         color = "#FF0073"
-    } else {
+    } else {            //graph 2 line color
         color = "#73FF00"
     }
     console.log('runs ', runs );

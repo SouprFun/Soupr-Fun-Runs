@@ -118,6 +118,7 @@ function InputForm() {
     setDate(new Date());
     setNote("")
 
+    //Sweet alert for submitting 
     swal({
       title: "Your run has been submited!",
       buttons: {

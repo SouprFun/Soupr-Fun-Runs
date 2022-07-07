@@ -19,9 +19,7 @@ function Graph() {
 
     for (let i = 0; i < runs.length; i++) {
         runs[i].index = i;
-        
-        //minutes.push(runs.time/60);
-    }
+        }
     console.log("new runs: ", runs, minutes);
 
     useEffect(() => {

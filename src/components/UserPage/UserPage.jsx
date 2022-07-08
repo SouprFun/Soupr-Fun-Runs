@@ -33,9 +33,9 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
-
-      <LogOutButton className="btn" />
-
+      <div>
+        <LogOutButton className="btn" />
+      </div>
       <div className='cards'>
         <Card variant="outlined" className='card' sx={{ width: 200 }}>
           <CardContent>

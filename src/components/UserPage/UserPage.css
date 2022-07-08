@@ -6,10 +6,9 @@
 }
 
 .cards{
-    display:flex;
+    display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
-    padding-left: 375px;
     margin-top: 20px;
      
 }

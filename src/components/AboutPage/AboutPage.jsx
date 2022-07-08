@@ -13,7 +13,8 @@ function AboutPage() {
           As a runner that started running more than a decade ago, one of the things that I wanted was a running tracker. 
           I would often run on a track or tredmill, instead of outside, so a GPS app wouldn't necessarily help. 
           So I decided for my solo project to make a run tracker to help visualize growth and keep track of runs/records. 
-          This project is (in it's current form) not a *complete and polished product* but a work in progress.
+          This project has been created in about 2 weeks, 
+          and is (in it's current form) not a *complete and polished product* but a work in progress.
         </p>
       </div>
     </div>

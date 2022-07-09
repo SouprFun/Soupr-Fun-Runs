@@ -116,7 +116,7 @@ function GraphItem({ runs, double, num }) {
             {/* <Grid container spacing={0}> */}
             {/* <Grid item s={12} md={8} lg={6} xl={6}> */}
             <VictoryChart
-                height={800}
+                height={700}
                 width={size}
                 domainPadding={20}
                 padding={{ left: 90, top: 50, right: 10, bottom: 50 }}

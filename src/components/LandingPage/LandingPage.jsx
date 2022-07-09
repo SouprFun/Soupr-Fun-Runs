@@ -19,6 +19,7 @@ function LandingPage() {
 
       <div className="grid">
         <div className="grid-col grid-col_8">
+          <h3>About</h3>
           
           <h3>Directions</h3>
           <ul>

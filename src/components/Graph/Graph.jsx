@@ -14,7 +14,7 @@ function Graph() {
     const dispatch = useDispatch()
     const runs = useSelector((store) => store.run)
     console.log("in graph runs: ", runs);
-    const [double, setDouble] = useState(false);
+    const [double, setDouble] = useState(true);
     let minutes = []
 
     for (let i = 0; i < runs.length; i++) {

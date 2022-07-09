@@ -19,7 +19,18 @@ function LandingPage() {
 
       <div className="grid">
         <div className="grid-col grid-col_8">
-         
+          
+          <h3>Directions</h3>
+          <ul>
+            <li>Register an account</li>
+            <li> Login </li>
+            <li> Click "New Run" at the top left </li>
+            <li> Input run distance in miles, run time in seconds, category and notes are optional.</li>
+            <li> Date/time will choose the current date/time if you don't select your own.</li>
+            <li> Click the "My Runs" link at the top to see your runs in a table.</li>
+            <li> Click "Graphs" link at the top to see the runs graphed and select what criteria you want graphed.</li>
+            <li> Have fun! :)</li>
+          </ul>
         </div>
         <div className="grid-col grid-col_4">
           <RegisterForm />
